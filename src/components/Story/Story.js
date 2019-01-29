@@ -11,7 +11,7 @@ const PosedStory = posed.div({
   visible: {
     opacity: 1,
     y: 0,
-    transition: { delay: 200, duration: 600}
+    transition: { delay: 100, duration: 600}
   }
 });
 
@@ -34,6 +34,24 @@ const Description =  styled.div`
   text-transform: uppercase;
 `;
 
+const ImageWrapper = styled.div`
+  padding-top: 110%;
+  background: black;
+  position: relative;
+`;
+
+const Image = styled.div`
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+`;
+
+const StoryWrapper = styled.div`
+  margin-bottom: 150px;
+`;
+
 class Story extends Component {
   constructor(props) {
     super(props);
@@ -51,8 +69,11 @@ class Story extends Component {
     return (
       <Waypoint onEnter={() => this.reveal()}>
         <PosedStory pose={this.state.revealed ? 'visible' : 'hidden'}>
-          <Title>{this.props.children}</Title>
-          <Description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in nisi erat. Nullam vitae enim vel est volutpat sodales tincidunt tristique elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce lobortis commodo eleifend. Nam quis orci ligula. Cras id viverra arcu, ut consectetur metus. Suspendisse vel fermentum.</Description>
+          <StoryWrapper>
+            <ImageWrapper><Image></Image></ImageWrapper>
+          </StoryWrapper>
+          {/* <Title>{this.props.children}</Title>
+          <Description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in nisi erat. Nullam vitae enim vel est volutpat sodales tincidunt tristique elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce lobortis commodo eleifend. Nam quis orci ligula. Cras id viverra arcu, ut consectetur metus. Suspendisse vel fermentum.</Description> */}
         </PosedStory>
       </Waypoint>
     );

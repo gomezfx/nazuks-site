@@ -18,7 +18,7 @@ const PosedWrapper = posed.div({
 });
 
 const Scene1 = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -42,12 +42,28 @@ const PosedMenuWrapper = posed.div({
 });
 
 const Container = styled.div`
-  width: 1000px;
+  width: 75vw;
   margin: 0 auto;
 `;
 
 const Scene2 = styled.div`
-  padding: 300px 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100vw;
+`;
+
+const ColContainer = styled.div`
+  display: flex;
+`;
+
+const ColLeft = styled.div`
+  width: 50%;
+`;
+
+const ColRight = styled.div`
+  width: 50%;
+  margin-left: 150px;
+  margin-top: 250px;
 `;
 
 class App extends Component {
@@ -69,8 +85,25 @@ class App extends Component {
         <Scene1>
           <PosedWrapper pose={this.state.loaded ? 'visible' : 'hidden'}>
             <Logo></Logo>
+            <div>[ homepage content here ]</div>
           </PosedWrapper>
         </Scene1>
+        <Scene2>
+          <Container>
+            <ColContainer>
+              <ColLeft>
+                <Story></Story>
+                <Story></Story>
+                <Story></Story>
+              </ColLeft>
+              <ColRight>
+                <Story></Story>
+                <Story></Story>
+                <Story></Story>
+              </ColRight>
+            </ColContainer>
+          </Container>
+        </Scene2>
       </div>
     );
   }

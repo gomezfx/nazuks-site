@@ -6,12 +6,12 @@ import posed from 'react-pose';
 const PosedLogo = posed.div({
   hidden: {
     opacity: 0,
-    textShadow: '-0px 10px 0px rgba(0, 0, 255, 1), -0px 40px 0px rgba(102, 102, 255, 1), -0px 80px 0px rgba(204, 204, 255, 1)',
+    textShadow: '-0px 10px 0px rgba(1, 255, 112, 1), -0px 40px 0px rgba(1, 255, 112, 1), -0px 80px 0px rgba(1, 255, 112, 1)',
     transform: 'translateY(25vh) rotateX(45deg)'
   },
   visible: {
     opacity: 1,
-    textShadow: '0px 0px 0px rgba(0, 0, 255, 0), 0px 0px 0px rgba(102, 102, 255, 0), 0px 0px 0px rgba(204, 204, 255, 0)',
+    textShadow: '0px 0px 0px rgba(1, 255, 112, 0), 0px 0px 0px rgba(1, 255, 112, 0), 0px 0px 0px rgba(1, 255, 112, 0)',
     transition: { type: 'spring', stiffness: 80 },
     transform: 'translateY(0vh) rotateX(0deg)'
   }
@@ -35,21 +35,18 @@ const TitleWrapper = styled.div`
 `;
 
 const StyledTitle = styled.a`
-  color: black;
+  color: transparent;
   font-weight: normal;
   font-family: 'DrukWide';
-  font-size: 42px;
+  font-size: 48px;
   display: inline-block;
   position: relative;
+  letter-spacing: 2px;
 `;
 
 const TitleStroke = styled(StyledTitle)`
-  position: absolute;
-  top: 0;
-  left: 0;
-   -webkit-text-stroke-width: 1px;
-   -webkit-text-stroke-color: white;
-   color: white;
+   -webkit-text-stroke-width: 2px;
+   -webkit-text-stroke-color: #01FF70;
    z-index: 15
 `
 
@@ -83,7 +80,7 @@ class Logo extends Component {
                 <PerspectiveOuter>
                   <PosedLogo>
                     <TitleWrapper>
-                      <StyledTitle>nazuk</StyledTitle>
+                      <TitleStroke>nazuk</TitleStroke>
                     </TitleWrapper>
                   </PosedLogo>
                 </PerspectiveOuter>
