@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Tilt from 'react-tilt';
 import posed from 'react-pose';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const PosedLogo = posed.div({
   hidden: {
@@ -34,7 +35,7 @@ const TitleWrapper = styled.div`
   display: inline-block;
 `;
 
-const StyledTitle = styled.a`
+const StyledTitle = styled(Link)`
   color: transparent;
   font-weight: normal;
   font-family: 'DrukWide';
@@ -42,6 +43,7 @@ const StyledTitle = styled.a`
   display: inline-block;
   position: relative;
   letter-spacing: 2px;
+  text-decoration: none;
 `;
 
 const TitleStroke = styled(StyledTitle)`
@@ -99,7 +101,7 @@ class Logo extends Component {
                 <PerspectiveOuter>
                   <PosedLogo>
                     <TitleWrapper>
-                      <TitleStroke>nazuk</TitleStroke>
+                      <TitleStroke to={this.props.to}>nazuk</TitleStroke>
                     </TitleWrapper>
                   </PosedLogo>
                 </PerspectiveOuter>

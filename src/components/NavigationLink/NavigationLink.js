@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import posed from 'react-pose';
 import Tilt from 'react-tilt';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
 const PosedNavigationLink = posed.div({
@@ -15,7 +16,7 @@ const PosedNavigationLink = posed.div({
   }
 });
 
-const StyledNavigationLink = styled.a`
+const StyledNavigationLink = styled(Link)`
   color: transparent;
   text-transform: uppercase;
   font-size: 20px;
@@ -29,6 +30,7 @@ const StyledNavigationLink = styled.a`
   position: relative;
   cursor: pointer;
   transition: all 500ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  text-decoration: none;
 
   &:hover {
     &:after {
@@ -55,7 +57,7 @@ class NavigationLink extends Component {
       <PosedNavigationLink>
         <Tilt className="Tilt" options={{ reset : true }} >
             <div className="Tilt-inner">
-              <StyledNavigationLink href={this.props.href}>{this.props.children}</StyledNavigationLink>
+              <StyledNavigationLink to={this.props.to}>{this.props.children}</StyledNavigationLink>
             </div>
           </Tilt>
         </PosedNavigationLink>

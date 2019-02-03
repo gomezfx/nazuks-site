@@ -2,29 +2,38 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import styled from 'styled-components';
-import posed from 'react-pose';
+import posed, { PoseGroup } from 'react-pose';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 import NavigationLink from './components/NavigationLink/NavigationLink';
 import Logo from './components/Logo/Logo';
 import SplashImage from './components/SplashImage/SplashImage';
 import Story from './components/Story/Story';
 
+const RouteContainer = posed.div({
+  enter: { opacity: 1, delay: 300, beforeChildren: true },
+  exit: { opacity: 0 }
+});
+
 const PosedWrapper = posed.div({
   visible: {
     delayChildren: 1000
   },
-  hidden: { },
+  hidden: {},
 });
 
-const Scene1 = styled.div`
-  min-height: 100vh;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+const AppWrapper = styled.div`
+  background: #DEDEDE;
 `;
 
-const MenuWrapper = styled.div`
+const PosedNavigationLinkWrapper = posed.div({
+  visible: {
+    delayChildren: 2000
+  },
+  hidden: {},
+});
+
+const NavigationLinkWrapper = styled(PosedNavigationLinkWrapper)`
   position: fixed;
   bottom: 10vh;
   left: 0;
@@ -37,21 +46,17 @@ const MenuWrapper = styled.div`
 
 const PosedMenuWrapper = posed.div({
   visible: {
-    delayChildren: 2000
+    delayChildren: 1000
   },
   hidden: {},
 });
+
 
 const Container = styled.div`
   width: 75vw;
   margin: 0 auto;
 `;
 
-const Scene2 = styled.div`
-  padding: 0;
-  min-height: 100vh;
-  width: 100vw;
-`;
 
 const ColContainer = styled.div`
   display: flex;
@@ -73,7 +78,7 @@ const PosedEmoji = posed.div({
   },
   visible: {
     opacity: 1,
-    transition: { delay: 1000}
+    transition: { delay: 1000 }
   }
 });
 
@@ -86,6 +91,86 @@ const Emoji = styled.div`
 
   }
 `;
+
+const IndexWrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const WritingWrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const VideoWrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const FashionWrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const SnSWrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Index = () => {
+  return (
+    <IndexWrapper>
+      <PosedEmoji><Emoji>🤑</Emoji></PosedEmoji>
+    </IndexWrapper>
+  )
+}
+
+const Writing = () => {
+  return (
+    <WritingWrapper>
+      WRITING
+    </WritingWrapper>
+  )
+}
+
+const Video = () => {
+  return (
+    <VideoWrapper>
+      VIDEO
+    </VideoWrapper>
+  )
+}
+
+const Fashion = () => {
+  return (
+    <FashionWrapper>
+      FASHION
+    </FashionWrapper>
+  )
+}
+
+const SnS = () => {
+  return (
+    <SnSWrapper>
+      S+S
+    </SnSWrapper>
+  )
+}
 
 class App extends Component {
   constructor(props) {
@@ -102,38 +187,38 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Scene1>
-          <PosedWrapper pose={this.state.loaded ? 'visible' : 'hidden'}>
-            <Logo></Logo>
-            <PosedMenuWrapper>
-              <MenuWrapper>
-                <NavigationLink>Writing</NavigationLink>
-                <NavigationLink>Video</NavigationLink>
-                <NavigationLink>Fashion</NavigationLink>
-                <NavigationLink>S+S</NavigationLink>
-              </MenuWrapper>
-            </PosedMenuWrapper>
-            <PosedEmoji><Emoji>🤑</Emoji></PosedEmoji>
-          </PosedWrapper>
-        </Scene1>
-        <Scene2>
-          <Container>
-            <ColContainer>
-              <ColLeft>
-                <Story></Story>
-                <Story></Story>
-                <Story></Story>
-              </ColLeft>
-              <ColRight>
-                <Story></Story>
-                <Story></Story>
-                <Story></Story>
-              </ColRight>
-            </ColContainer>
-          </Container>
-        </Scene2>
-      </div>
+      <Route
+        render={({ location }) => (
+          <div className="App">
+            <AppWrapper>
+              <PosedMenuWrapper pose={this.state.loaded ? 'visible' : 'hidden'}>
+                <Logo to="/"></Logo>
+                <NavigationLinkWrapper>
+                  <NavigationLink to="/writing">Writing</NavigationLink>
+                  <NavigationLink to="/video">Video</NavigationLink>
+                  <NavigationLink to="/fashion">Fashion</NavigationLink>
+                  <NavigationLink to="s+s">S+S</NavigationLink>
+                </NavigationLinkWrapper>
+              </PosedMenuWrapper>
+
+              <PoseGroup>
+                <RouteContainer key={location.key}>
+                  <Switch location={location}>
+                    <Route path="/" exact component={Index} key="index" />
+                    <Route path="/writing/" component={Writing} key="writing" />
+                    <Route path="/video/" component={Video} key="video" />
+                    <Route path="/fashion/" component={Fashion} key="fashion" />
+                    <Route path="/s+s/" component={SnS} key="sns" />
+                  </Switch>
+                </RouteContainer>
+              </PoseGroup>
+
+
+            </AppWrapper>
+          </div>
+        )}
+      />
+
     );
   }
 }
