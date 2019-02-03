@@ -11,8 +11,7 @@ import Story from './components/Story/Story';
 
 const PosedWrapper = posed.div({
   visible: {
-    delayChildren: 1000,
-    staggerChildren: 1000
+    delayChildren: 1000
   },
   hidden: { },
 });
@@ -27,16 +26,18 @@ const Scene1 = styled.div`
 
 const MenuWrapper = styled.div`
   position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 50px;
+  bottom: 10vh;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 10;
+  width: 100%;
 `;
 
 const PosedMenuWrapper = posed.div({
   visible: {
-    delayChildren: 1000,
-    staggerChildren: 50
+    delayChildren: 2000
   },
   hidden: {},
 });
@@ -66,6 +67,26 @@ const ColRight = styled.div`
   margin-top: 250px;
 `;
 
+const PosedEmoji = posed.div({
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: { delay: 1000}
+  }
+});
+
+const Emoji = styled.div`
+  font-size: 100px;
+  transition:         transform 1s ease-in-out;
+
+  &:hover {
+          transform: rotate(360deg);
+
+  }
+`;
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -85,7 +106,15 @@ class App extends Component {
         <Scene1>
           <PosedWrapper pose={this.state.loaded ? 'visible' : 'hidden'}>
             <Logo></Logo>
-            <div>[ homepage content here ]</div>
+            <PosedMenuWrapper>
+              <MenuWrapper>
+                <NavigationLink>Writing</NavigationLink>
+                <NavigationLink>Video</NavigationLink>
+                <NavigationLink>Fashion</NavigationLink>
+                <NavigationLink>S+S</NavigationLink>
+              </MenuWrapper>
+            </PosedMenuWrapper>
+            <PosedEmoji><Emoji>🤑</Emoji></PosedEmoji>
           </PosedWrapper>
         </Scene1>
         <Scene2>

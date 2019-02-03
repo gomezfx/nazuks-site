@@ -22,8 +22,8 @@ const StyledLogo = styled.div`
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
-  padding: 40px;
-  margin: 0 auto;
+  padding: 0;
+  margin: 40px auto 0 auto;
   top: 0;
   cursor: pointer;
   z-index: 5;
@@ -46,8 +46,27 @@ const StyledTitle = styled.a`
 
 const TitleStroke = styled(StyledTitle)`
    -webkit-text-stroke-width: 2px;
-   -webkit-text-stroke-color: #01FF70;
+   -webkit-text-stroke-color: #000000;
    z-index: 15
+   position: relative;
+
+   &:hover {
+    &:after {
+      right: -10%;
+    }
+  }
+
+  &:after {
+    position: absolute;
+    height: 100%;
+    right: 110%;
+    left: -10%;
+    top: 0;
+    background: #01FF70;
+    content: '';
+    z-index: -1;
+    transition: all 500ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  }
 `
 
 const Overlay = styled.div`
