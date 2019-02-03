@@ -202,7 +202,7 @@ class App extends Component {
               </PosedMenuWrapper>
 
               <PoseGroup>
-                <RouteContainer key={location.key}>
+                <RouteContainer key={location.pathname}>
                   <Switch location={location}>
                     <Route path="/" exact component={Index} key="index" />
                     <Route path="/writing/" component={Writing} key="writing" />
