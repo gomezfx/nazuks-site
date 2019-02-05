@@ -35,7 +35,7 @@ const Description =  styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  padding-top: 110%;
+  padding-top: 120%;
   background: black;
   position: relative;
 `;
@@ -49,7 +49,8 @@ const Image = styled.div`
 `;
 
 const StoryWrapper = styled.div`
-  margin-bottom: 150px;
+  margin: 10px;
+  width: 30vw;
 `;
 
 class Story extends Component {

@@ -9,6 +9,7 @@ import NavigationLink from './components/NavigationLink/NavigationLink';
 import Logo from './components/Logo/Logo';
 import SplashImage from './components/SplashImage/SplashImage';
 import Story from './components/Story/Story';
+import StoryContainer from './components/StoryContainer/StoryContainer';
 
 const RouteContainer = posed.div({
   enter: { opacity: 1, delay: 300, beforeChildren: true },
@@ -24,6 +25,9 @@ const PosedWrapper = posed.div({
 
 const AppWrapper = styled.div`
   background: #DEDEDE;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 `;
 
 const PosedNavigationLinkWrapper = posed.div({
@@ -40,7 +44,7 @@ const NavigationLinkWrapper = styled(PosedNavigationLinkWrapper)`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10;
+  z-index: 100;
   width: 100%;
 `;
 
@@ -106,6 +110,11 @@ const WritingWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar { 
+    display: none; 
+  }
 `;
 
 const VideoWrapper = styled.div`
@@ -143,7 +152,14 @@ const Index = () => {
 const Writing = () => {
   return (
     <WritingWrapper>
-      WRITING
+      <StoryContainer>
+        <Story></Story>
+        <Story></Story>
+        <Story></Story>
+        <Story></Story>
+        <Story></Story>
+        <Story></Story>
+      </StoryContainer>
     </WritingWrapper>
   )
 }
