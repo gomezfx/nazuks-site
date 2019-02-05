@@ -1,7 +1,7 @@
 {
   "main.css": "/nazuks-site/static/css/main.31944877.chunk.css",
-  "main.js": "/nazuks-site/static/js/main.2cd21a59.chunk.js",
-  "main.js.map": "/nazuks-site/static/js/main.2cd21a59.chunk.js.map",
+  "main.js": "/nazuks-site/static/js/main.5edd4016.chunk.js",
+  "main.js.map": "/nazuks-site/static/js/main.5edd4016.chunk.js.map",
   "static/js/1.33cd678b.chunk.js": "/nazuks-site/static/js/1.33cd678b.chunk.js",
   "static/js/1.33cd678b.chunk.js.map": "/nazuks-site/static/js/1.33cd678b.chunk.js.map",
   "runtime~main.js": "/nazuks-site/static/js/runtime~main.1fe027a4.js",
@@ -10,6 +10,6 @@
   "static/media/logo.svg": "/nazuks-site/static/media/logo.5d5d9eef.svg",
   "static/css/main.31944877.chunk.css.map": "/nazuks-site/static/css/main.31944877.chunk.css.map",
   "index.html": "/nazuks-site/index.html",
-  "precache-manifest.0fdfdac044ac9538b7127ca617518e5e.js": "/nazuks-site/precache-manifest.0fdfdac044ac9538b7127ca617518e5e.js",
+  "precache-manifest.86b6b96b651b29f0b9c3c5d2862b5975.js": "/nazuks-site/precache-manifest.86b6b96b651b29f0b9c3c5d2862b5975.js",
   "service-worker.js": "/nazuks-site/service-worker.js"
 }
