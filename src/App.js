@@ -109,7 +109,6 @@ const WritingWrapper = styled.div`
   width: 100vw;
   display: flex;
   align-items: center;
-  justify-content: center;
   overflow-x: auto;
 
   &::-webkit-scrollbar { 

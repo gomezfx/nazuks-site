@@ -35,9 +35,19 @@ const Description =  styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  padding-top: 120%;
-  background: black;
+  width: calc(65vh*21/29.7);
+  height: 65vh;
+  background-image: ${props => 'url(https://source.unsplash.com/random/1000x1000?sig=' + props.param + ')'};
   position: relative;
+  background-blend-mode: multiply;
+  background-color: #444;
+  filter: grayscale(100%);
+  transition: all 2s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  cursor: pointer;
+  &:hover {
+    background-color: transparent;
+    filter: none;
+  }
 `;
 
 const Image = styled.div`
@@ -49,8 +59,7 @@ const Image = styled.div`
 `;
 
 const StoryWrapper = styled.div`
-  margin: 10px;
-  width: 30vw;
+
 `;
 
 class Story extends Component {
@@ -71,7 +80,7 @@ class Story extends Component {
       <Waypoint onEnter={() => this.reveal()}>
         <PosedStory pose={this.state.revealed ? 'visible' : 'hidden'}>
           <StoryWrapper>
-            <ImageWrapper><Image></Image></ImageWrapper>
+            <ImageWrapper param={Math.floor((Math.random() * 10000) + 1)}><Image></Image></ImageWrapper>
           </StoryWrapper>
           {/* <Title>{this.props.children}</Title>
           <Description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in nisi erat. Nullam vitae enim vel est volutpat sodales tincidunt tristique elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce lobortis commodo eleifend. Nam quis orci ligula. Cras id viverra arcu, ut consectetur metus. Suspendisse vel fermentum.</Description> */}
