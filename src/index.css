@@ -1,15 +1,31 @@
 @font-face {
   font-family: 'DrukWide';
   src: url(./fonts/DrukWide-Medium.otf) format('opentype');
+  font-weight: normal;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500,700');
+@font-face {
+  font-family: 'DrukWide';
+  src: url(./fonts/DrukWide-Heavy.otf) format('opentype');
+  font-weight: bold;
+}
 
+@font-face {
+  font-family: 'Circular';
+  src: url(./fonts/lineto-circular-pro-medium.ttf) format('truetype');
+  font-weight: normal;
+}
+
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500,700');
+html {
+  font-size: 13px;
+}
 body {
   margin: 0;
   padding: 0;
   font-family: 'Noto Sans JP', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: transparent;
+  background: #DEDEDE;
 }
