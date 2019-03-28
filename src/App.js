@@ -13,10 +13,21 @@ import SocialLink from './components/SocialLink/SocialLink';
 import SplashImage from './components/SplashImage/SplashImage';
 import Story from './components/Story/Story';
 import StoryContainer from './components/StoryContainer/StoryContainer';
+import VideoContainer from './components/VideoContainer/VideoContainer';
+import Video from './components/Video/Video';
+
 
 // Assets
 import twitterSvg from './images/twitter.svg';
 import instagramSvg from './images/instagram.svg';
+
+import img1 from './images/img1.png'
+import img2 from './images/img2.png'
+import img3 from './images/img3.png'
+import img4 from './images/img4.png'
+import img5 from './images/img5.png'
+
+import videoclip from './videos/videoclip.mp4'
 
 const RouteContainer = posed.div({
   enter: { opacity: 1, delay: 300, beforeChildren: true },
@@ -46,45 +57,6 @@ const FadeIn = styled.div`
   opacity: ${props => props.visible ? '1' : '0'};
 `;
 
-const PosedNavigationLinkWrapper = posed.div({
-  visible: {
-    delayChildren: 2000
-  },
-  hidden: {},
-});
-
-const NavigationLinkWrapper = styled(PosedNavigationLinkWrapper)`
-  position: fixed;
-  bottom: 10vh;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-  width: 100%;
-
-
-`;
-
-const Container = styled.div`
-  width: 75vw;
-  margin: 0 auto;
-`;
-
-
-const ColContainer = styled.div`
-  display: flex;
-`;
-
-const ColLeft = styled.div`
-  width: 50%;
-`;
-
-const ColRight = styled.div`
-  width: 50%;
-  margin-left: 150px;
-  margin-top: 250px;
-`;
 
 const PosedEmoji = posed.div({
   hidden: {
@@ -120,11 +92,8 @@ const WritingWrapper = styled.div`
 `;
 
 const VideoWrapper = styled.div`
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
 `;
 
 const FashionWrapper = styled.div`
@@ -166,61 +135,79 @@ const Writing = () => {
       <StoryContainer>
         <Story
           title="Gunna wants you to go out and get it"
-          subtitle="The FADER (2017)">
+          subtitle="The FADER (2017)"
+          image={img1}>
         </Story>
         <Story
           title="duis convallis convallis tellus id"
-          subtitle="The FADER (2017)">
+          subtitle="The FADER (2017)"
+          image={img2}>
         </Story>
         <Story
           title="pulvinar neque laoreet suspendisse interdum"
-          subtitle="The FADER (2017)">
+          subtitle="The FADER (2017)"
+          image={img3}>
         </Story>
         <Story
           title="laoreet sit amet"
-          subtitle="The FADER (2017)">
+          subtitle="The FADER (2017)"
+          image={img4}>
         </Story>
         <Story 
           title="dictumst quisque sagittis purus"
-          subtitle="The FADER (2017)">
+          subtitle="The FADER (2017)"
+          image={img5}>
         </Story>
         <Story 
           title="aliquam"
-          subtitle="The FADER (2017)">
+          subtitle="The FADER (2017)"
+          image={img1}>
         </Story>
         <Story 
           title="viverra maecenas accumsan lacus"
-          subtitle="The FADER (2017)">
+          subtitle="The FADER (2017)"
+          image={img2}>
         </Story>
         <Story
           title="accumsan tortor posuere"
-          subtitle="The FADER (2017)">
+          subtitle="The FADER (2017)"
+          image={img3}>
         </Story>
         <Story
           title="suspendisse ultrices gravida dictum fusce ut"
-          subtitle="The FADER (2017)">
+          subtitle="The FADER (2017)"
+          image={img4}>
         </Story>
         <Story
           title="vulputate dignissim suspendisse in"
-          subtitle="The FADER (2017)">
+          subtitle="The FADER (2017)"
+          image={img5}>
         </Story>
         <Story
           title="feugiat sed"
-          subtitle="The FADER (2017)">
+          subtitle="The FADER (2017)"
+          image={img1}>
         </Story>
         <Story
           title="eu augue ut lectus"
-          subtitle="The FADER (2017)">
+          subtitle="The FADER (2017)"
+          image={img2}>
         </Story>
       </StoryContainer>
     </WritingWrapper>
   )
 }
 
-const Video = () => {
+const VideoSection = () => {
   return (
     <VideoWrapper>
-      VIDEO
+      <VideoContainer>
+        <Video video={videoclip} image={img1}></Video>
+        <Video video={videoclip} image={img2}></Video>
+        <Video video={videoclip} image={img3}></Video>
+        <Video video={videoclip} image={img4}></Video>
+        <Video video={videoclip} image={img5}></Video>
+      </VideoContainer>
     </VideoWrapper>
   )
 }
@@ -247,6 +234,9 @@ const NavTop = styled.div`
   right: 1.953rem;
   position: fixed;
   z-index: 10;
+  transform: ${props => props.visible ? 'translateY(0%)' : 'translateY(20px)'};
+  transition: all 1.6s cubic-bezier(.075,.82,.165,1);
+  opacity: ${props => props.visible ? '1' : '0'};
 `;
 
 const NavLinkWrapper = styled.div`
@@ -301,29 +291,28 @@ class App extends Component {
         render={({ location }) => (
           <div className="App">
             <AppWrapper>
+              <NavTop visible={this.state.loaded}>
+                <NavLinkWrapper>
+                  <NavLink to="/writing">Writing</NavLink>
+                  <NavLink to="/video">Video</NavLink>
+                  <NavLink to="/fashion">Fashion</NavLink>
+                  <NavLink to="s+s">S+S</NavLink>
+                </NavLinkWrapper>
+                <NavLogoWrapper>
+                  <NavLogo to="/">nazuk</NavLogo>
+                </NavLogoWrapper>
+                <SocialLinkWrapper>
+                  <SocialLink to="http://www.instagram.com" src={instagramSvg}></SocialLink>
+                  <SocialLink to="http://www.twitter.com" src={twitterSvg}></SocialLink>
+                </SocialLinkWrapper>
+              </NavTop>
               <FadeIn  visible={this.state.loaded}>
-                <NavTop>
-                  <NavLinkWrapper>
-                    <NavLink to="/writing">Writing</NavLink>
-                    <NavLink to="/video">Video</NavLink>
-                    <NavLink to="/fashion">Fashion</NavLink>
-                    <NavLink to="s+s">S+S</NavLink>
-                  </NavLinkWrapper>
-                  <NavLogoWrapper>
-                    <NavLogo to="/">nazuk</NavLogo>
-                  </NavLogoWrapper>
-                  <SocialLinkWrapper>
-                    <SocialLink to="http://www.instagram.com" src={instagramSvg}></SocialLink>
-                    <SocialLink to="http://www.twitter.com" src={twitterSvg}></SocialLink>
-                  </SocialLinkWrapper>
-                </NavTop>
-
                 <PoseGroup>
                   <RouteContainer key={location.pathname}>
                     <Switch location={location}>
                       <Route path="/" exact component={Index} key="index" />
                       <Route path="/writing/" component={Writing} key="writing" />
-                      <Route path="/video/" component={Video} key="video" />
+                      <Route path="/video/" component={VideoSection} key="video" />
                       <Route path="/fashion/" component={Fashion} key="fashion" />
                       <Route path="/s+s/" component={SnS} key="sns" />
                     </Switch>

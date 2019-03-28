@@ -28,11 +28,12 @@ const Image = styled.div`
   width: 100%;
   left: 0;
   top: 0;
-  //background-image: ${props => 'url(https://source.unsplash.com/random/1000x1000?sig=' + props.param + ')'};
+  background-image: ${props => 'url(' + props.image + ')'};
   transition: all .7s cubic-bezier(.075,.82,.165,1);
   background-color: rgba(1, 255, 112, 1);
   background-blend-mode: overlay;
-  
+  background-size: cover;
+  background-position: 50% 50%;
   &:hover {
 
   }
@@ -84,7 +85,7 @@ const StoryWrapper = styled.div`
   &:hover {
     ${Image} {
       transform: scale(1.2);
-      background-color: rgba(1, 255, 112, 1);
+      background-color: rgba(1, 255, 112, 0);
     }
 
     ${TextWrapper} {
@@ -121,7 +122,7 @@ class Story extends Component {
       <Waypoint onEnter={() => this.reveal()}>
           <div>
           <StoryWrapper visible={this.state.revealed}>
-            <ImageWrapper><Image param={Math.floor((Math.random() * 10000) + 1)}></Image></ImageWrapper>
+            <ImageWrapper><Image image={this.props.image}></Image></ImageWrapper>
             <TextWrapper>
             <Title>{this.props.title}</Title>
             <SubTitle>The FADER (2017)</SubTitle>

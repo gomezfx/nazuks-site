@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import posed from 'react-pose';
 import Waypoint from "react-waypoint";
 
-const StoryContainer =  styled.div`
+const StoryWrapper =  styled.div`
     position: relative;
     display: flex;
     align-items: flex-start;
@@ -14,9 +14,6 @@ const StoryContainer =  styled.div`
     padding-bottom: 200px;
 `;
 
-const StoryWrapper = styled.div`
-
-`;
 const Scrollable = styled.div`
 
 `;
@@ -47,7 +44,7 @@ const ColRight = styled.div`
   }
 `;
 
-class Story extends Component {
+class StoryContainer extends Component {
   constructor(props) {
     super(props);
   }
@@ -57,7 +54,7 @@ class Story extends Component {
     let odd = this.props.children.filter((child, index) => !(index % 2));
 
     return (
-        <StoryContainer>
+        <StoryWrapper>
           <ColLeft>
             {
               odd.map((child, index) => <StoryItem>{child}</StoryItem>)
@@ -68,9 +65,9 @@ class Story extends Component {
               even.map((child, index) => <StoryItem>{child}</StoryItem>)
             }
           </ColRight>
-        </StoryContainer>
+        </StoryWrapper>
     );
   }
 }
 
-export default Story;
+export default StoryContainer;
