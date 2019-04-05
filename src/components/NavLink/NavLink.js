@@ -15,7 +15,7 @@ const Background = styled.div`
 `;
 
 const StyledNavLink = styled(Link)`
-  font-size: 1rem;
+  font-size: 10vw;
   color: #000000;
   font-family: 'DrukWide';
   text-transform: lowercase;
@@ -26,6 +26,10 @@ const StyledNavLink = styled(Link)`
     ${Background} {
         right: -10%;
     }
+  }
+
+  @media(min-width: 768px) {
+    font-size: 1rem;
   }
 `;
 

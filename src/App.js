@@ -35,13 +35,6 @@ const RouteContainer = posed.div({
   exit: { opacity: 0 }
 });
 
-const PosedWrapper = posed.div({
-  visible: {
-    delayChildren: 1000
-  },
-  hidden: {},
-});
-
 const AppWrapper = styled.div`
   background: #DEDEDE;
   overflow: hidden;
@@ -54,9 +47,9 @@ const AppWrapper = styled.div`
 `;
 
 const FadeIn = styled.div`
-  transform: ${props => props.visible ? 'translateY(0%)' : 'translateY(20px)'};
+  transform: ${props => props.fadeIn ? 'translateY(0%)' : 'translateY(20px)'};
   transition: all 1.6s cubic-bezier(.075,.82,.165,1);
-  opacity: ${props => props.visible ? '1' : '0'};
+  opacity: ${props => props.fadeIn ? '1' : '0'};
 `;
 
 
@@ -235,9 +228,9 @@ const NavTop = styled.div`
   right: 1.953rem;
   position: fixed;
   z-index: 10;
-  transform: ${props => props.visible ? 'translateY(0%)' : 'translateY(20px)'};
+  transform: ${props => props.fadeIn ? 'translateY(0%)' : 'translateY(20px)'};
   transition: all 1.6s cubic-bezier(.075,.82,.165,1);
-  opacity: ${props => props.visible ? '1' : '0'};
+  opacity: ${props => props.fadeIn ? '1' : '0'};
 `;
 
 const NavLinkWrapper = styled.div`
@@ -250,6 +243,25 @@ const NavLinkWrapper = styled.div`
   flex-direction: column;
   background: #01FF70;
   z-index: 9;
+  visibility:  ${props => props.visible ? 'visible' : 'hidden'};
+
+  @media  (max-width: 767px) {
+    padding-top: 6rem;
+    padding-left: 1.953rem;
+    padding-right: 1.953rem;
+    transition-delay: .6s;
+    transform-origin: top center;
+    opacity: ${props => props.visible ? '1' : '0'};
+    transform: ${props => props.visible ? 'perspective(1000px) rotateX(0)' : 'perspective(1000px) rotateX(-90deg)'};
+    transition: transform .75s cubic-bezier(.075,.82,.165,1),opacity .3s cubic-bezier(.075,.82,.165,1);
+    
+    > * {
+      transform: ${props => props.visible ? 'translateY(0%)' : 'translateY(20px)'};
+      transition: all .75s cubic-bezier(.075,.82,.165,1);
+      opacity: ${props => props.visible ? '1' : '0'};
+    }
+  }
+
   @media (min-width: 768px) {
     background: transparent;
     position: absolute;
@@ -260,9 +272,9 @@ const NavLinkWrapper = styled.div`
     width: auto;
     min-height: initial;
     z-index: 10;
-    transform: ${props => props.visible ? 'translateY(0%)' : 'translateY(20px)'};
+    transform: ${props => props.fadeIn ? 'translateY(0%)' : 'translateY(20px)'};
     transition: all 1.6s cubic-bezier(.075,.82,.165,1);
-    opacity: ${props => props.visible ? '1' : '0'};
+    opacity: ${props => props.fadeIn ? '1' : '0'};
 
     > * {
       margin-bottom: .25rem;
@@ -271,10 +283,13 @@ const NavLinkWrapper = styled.div`
 `;
 
 const NavLogoWrapper = styled.div`
+  z-index: 10;
+  top: 1.953rem;
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
-  top: 0;
+  transform: ${props => props.fadeIn ? 'translate(-50%, 0%)' : 'translate(-50%, 20px)'};
+  transition: all 1.6s cubic-bezier(.075,.82,.165,1);
+  opacity: ${props => props.fadeIn ? '1' : '0'};
 `;
 
 const SocialLinkWrapper = styled.div`
@@ -291,8 +306,16 @@ const SocialLinkWrapper = styled.div`
 
 const HamburgerIconWrapper = styled.div`
    position: absolute;
+   z-index: 10;
+   top: calc(1.1 * 1.953rem);
+   left: 1.953rem;
+   transform: ${props => props.fadeIn ? 'translateY(0%)' : 'translateY(20px)'};
+   transition: all 1.6s cubic-bezier(.075,.82,.165,1);
+   opacity: ${props => props.fadeIn ? '1' : '0'};
 
-   
+   @media (min-width: 768px) {
+     display: none;
+   }    
 `;
 
 class App extends Component {
@@ -300,7 +323,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      loaded: false
+      loaded: false,
+      menuOpen: false
     }
   }
 
@@ -308,6 +332,21 @@ class App extends Component {
     setTimeout(() => {
       this.setState({ loaded: true })
     }, 500);
+    
+    this.toggleMenu();
+    window.addEventListener("resize", this.toggleMenu)
+  }
+
+  toggleMenu = () => {
+    let width = window.innerWidth; 
+    let open = false;
+    console.log(width);
+    if (width >= 768) {
+      open = true;
+    }
+    this.setState({ menuOpen: open })
+    
+    console.log('here');
   }
 
   render() {
@@ -316,26 +355,28 @@ class App extends Component {
         render={({ location }) => (
           <div className="App">
             <AppWrapper>
-                <HamburgerIcon></HamburgerIcon>
-                <NavLinkWrapper visible={this.state.loaded}>
+                <HamburgerIconWrapper fadeIn={this.state.loaded}>
+                  <HamburgerIcon open={this.state.menuOpen} onClick={e => this.setState({ menuOpen: !this.state.menuOpen })}></HamburgerIcon>
+                </HamburgerIconWrapper>
+                <NavLinkWrapper fadeIn={this.state.loaded} visible={this.state.menuOpen}>
                   <NavLink to="/writing">Writing</NavLink>
                   <NavLink to="/video">Video</NavLink>
                   <NavLink to="/fashion">Fashion</NavLink>
                   <NavLink to="s+s">S+S</NavLink>
                 </NavLinkWrapper>
-
-              <NavTop visible={this.state.loaded}>
-
-                <NavLogoWrapper>
+                <NavLogoWrapper  fadeIn={this.state.loaded}>
                   <NavLogo to="/">nazuk</NavLogo>
                 </NavLogoWrapper>
+              <NavTop fadeIn={this.state.loaded}>
+
+
                 <SocialLinkWrapper>
                   <SocialLink to="http://www.instagram.com" src={instagramSvg}></SocialLink>
                   <SocialLink to="http://www.twitter.com" src={twitterSvg}></SocialLink>
                 </SocialLinkWrapper>
               </NavTop>
 
-              <FadeIn  visible={this.state.loaded}>
+              <FadeIn  fadeIn={this.state.loaded}>
                 <PoseGroup>
                   <RouteContainer key={location.pathname}>
                     <Switch location={location}>
