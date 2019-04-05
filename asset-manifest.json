@@ -1,9 +1,9 @@
 {
-  "main.css": "/nazuks-site/static/css/main.cb77274a.chunk.css",
-  "main.js": "/nazuks-site/static/js/main.3da9ecc7.chunk.js",
-  "main.js.map": "/nazuks-site/static/js/main.3da9ecc7.chunk.js.map",
-  "static/js/1.6db23e53.chunk.js": "/nazuks-site/static/js/1.6db23e53.chunk.js",
-  "static/js/1.6db23e53.chunk.js.map": "/nazuks-site/static/js/1.6db23e53.chunk.js.map",
+  "main.css": "/nazuks-site/static/css/main.f6da390a.chunk.css",
+  "main.js": "/nazuks-site/static/js/main.d3919f82.chunk.js",
+  "main.js.map": "/nazuks-site/static/js/main.d3919f82.chunk.js.map",
+  "static/js/1.3a074a39.chunk.js": "/nazuks-site/static/js/1.3a074a39.chunk.js",
+  "static/js/1.3a074a39.chunk.js.map": "/nazuks-site/static/js/1.3a074a39.chunk.js.map",
   "runtime~main.js": "/nazuks-site/static/js/runtime~main.1fe027a4.js",
   "runtime~main.js.map": "/nazuks-site/static/js/runtime~main.1fe027a4.js.map",
   "static/media/videoclip.mp4": "/nazuks-site/static/media/videoclip.dde7c793.mp4",
@@ -16,8 +16,8 @@
   "static/media/instagram.svg": "/nazuks-site/static/media/instagram.662a4f14.svg",
   "static/media/index.css": "/nazuks-site/static/media/lineto-circular-pro-medium.44d10b71.ttf",
   "static/media/logo.svg": "/nazuks-site/static/media/logo.5d5d9eef.svg",
-  "static/css/main.cb77274a.chunk.css.map": "/nazuks-site/static/css/main.cb77274a.chunk.css.map",
+  "static/css/main.f6da390a.chunk.css.map": "/nazuks-site/static/css/main.f6da390a.chunk.css.map",
   "index.html": "/nazuks-site/index.html",
-  "precache-manifest.c55ccc7e6bc4b294b7021ecb09059fef.js": "/nazuks-site/precache-manifest.c55ccc7e6bc4b294b7021ecb09059fef.js",
+  "precache-manifest.07cbda85d843cf7fda36d5cef801880a.js": "/nazuks-site/precache-manifest.07cbda85d843cf7fda36d5cef801880a.js",
   "service-worker.js": "/nazuks-site/service-worker.js"
 }
