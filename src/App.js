@@ -28,6 +28,7 @@ import img4 from './images/img4.png'
 import img5 from './images/img5.png'
 
 import videoclip from './videos/videoclip.mp4'
+import HamburgerIcon from './components/HamburgerIcon/HamburgerIcon';
 
 const RouteContainer = posed.div({
   enter: { opacity: 1, delay: 300, beforeChildren: true },
@@ -49,6 +50,7 @@ const AppWrapper = styled.div`
   min-height: 100vh;
   max-width: 1680px;
   margin: 0 auto;
+  position: relative;
 `;
 
 const FadeIn = styled.div`
@@ -73,8 +75,7 @@ const Emoji = styled.div`
   transition:         transform 1s ease-in-out;
 
   &:hover {
-          transform: rotate(360deg);
-
+      transform: rotate(360deg);
   }
 `;
 
@@ -153,17 +154,17 @@ const Writing = () => {
           subtitle="The FADER (2017)"
           image={img4}>
         </Story>
-        <Story 
+        <Story
           title="dictumst quisque sagittis purus"
           subtitle="The FADER (2017)"
           image={img5}>
         </Story>
-        <Story 
+        <Story
           title="aliquam"
           subtitle="The FADER (2017)"
           image={img1}>
         </Story>
-        <Story 
+        <Story
           title="viverra maecenas accumsan lacus"
           subtitle="The FADER (2017)"
           image={img2}>
@@ -241,13 +242,31 @@ const NavTop = styled.div`
 
 const NavLinkWrapper = styled.div`
   position: absolute;
-  left: 0;
   top: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: #01FF70;
+  z-index: 9;
+  @media (min-width: 768px) {
+    background: transparent;
+    position: absolute;
+    top: 1.953rem;
+    left: 1.953rem;
+    bottom: auto;
+    right: auto;
+    width: auto;
+    min-height: initial;
+    z-index: 10;
+    transform: ${props => props.visible ? 'translateY(0%)' : 'translateY(20px)'};
+    transition: all 1.6s cubic-bezier(.075,.82,.165,1);
+    opacity: ${props => props.visible ? '1' : '0'};
 
-  > * {
-    margin-bottom: .25rem;
+    > * {
+      margin-bottom: .25rem;
+    }
   }
 `;
 
@@ -268,6 +287,12 @@ const SocialLinkWrapper = styled.div`
    > * {
      margin-right: 1rem;
    }
+`;
+
+const HamburgerIconWrapper = styled.div`
+   position: absolute;
+
+   
 `;
 
 class App extends Component {
@@ -291,13 +316,16 @@ class App extends Component {
         render={({ location }) => (
           <div className="App">
             <AppWrapper>
-              <NavTop visible={this.state.loaded}>
-                <NavLinkWrapper>
+                <HamburgerIcon></HamburgerIcon>
+                <NavLinkWrapper visible={this.state.loaded}>
                   <NavLink to="/writing">Writing</NavLink>
                   <NavLink to="/video">Video</NavLink>
                   <NavLink to="/fashion">Fashion</NavLink>
                   <NavLink to="s+s">S+S</NavLink>
                 </NavLinkWrapper>
+
+              <NavTop visible={this.state.loaded}>
+
                 <NavLogoWrapper>
                   <NavLogo to="/">nazuk</NavLogo>
                 </NavLogoWrapper>
@@ -306,6 +334,7 @@ class App extends Component {
                   <SocialLink to="http://www.twitter.com" src={twitterSvg}></SocialLink>
                 </SocialLinkWrapper>
               </NavTop>
+
               <FadeIn  visible={this.state.loaded}>
                 <PoseGroup>
                   <RouteContainer key={location.pathname}>
@@ -319,6 +348,7 @@ class App extends Component {
                   </RouteContainer>
                 </PoseGroup>
               </FadeIn>
+
             </AppWrapper>
           </div>
         )}
