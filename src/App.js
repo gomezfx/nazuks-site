@@ -362,7 +362,9 @@ class App extends Component {
                   <NavLink to="/writing">Writing</NavLink>
                   <NavLink to="/video">Video</NavLink>
                   <NavLink to="/fashion">Fashion</NavLink>
-                  <NavLink to="s+s">S+S</NavLink>
+                  <NavLink to="/live+radio">live + radio</NavLink>
+                  <NavLink to="/s+s">s+s</NavLink>
+                  <NavLink to="/info">Info</NavLink>
                 </NavLinkWrapper>
                 <NavLogoWrapper  fadeIn={this.state.loaded}>
                   <NavLogo to="/">nazuk</NavLogo>
