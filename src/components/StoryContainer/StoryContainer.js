@@ -14,33 +14,56 @@ const StoryWrapper =  styled.div`
     padding-bottom: 200px;
 `;
 
-const Scrollable = styled.div`
-
-`;
 
 const StoryItem = styled.div`
 
 `;
 
 const ColLeft = styled.div`
-  width: calc(50% - 75px);
-  marign-right: 75px;
+  display: none;
 
-  > *:first-child {
-    margin-top: 0;
-  }
-  
-  > * {
-    margin-top: 200px;
+  @media (min-width: 768px) {
+    display: block;
+    width: calc(50% - 75px);
+    margin-right: 75px;
+
+    > *:first-child {
+      margin-top: 0;
+    }
+
+    > * {
+      margin-top: 200px;
+    }
   }
 `;
 
 const ColRight = styled.div`
-  width: calc(50% - 75px);
-  margin-left: 75px;
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+    width: calc(50% - 75px);
+    margin-left: 75px;
+
+    > * {
+      margin-top: 200px;
+    }
+  }
+`;
+
+const ColMobile = styled.div`
+  width: 100%;
 
   > * {
-    margin-top: 200px;
+    margin-top: 100px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  @media (min-width: 768px) {
+    display: none;
   }
 `;
 
@@ -55,6 +78,7 @@ class StoryContainer extends Component {
 
     return (
         <StoryWrapper>
+          <ColMobile>{this.props.children}</ColMobile>
           <ColLeft>
             {
               odd.map((child, index) => <StoryItem>{child}</StoryItem>)

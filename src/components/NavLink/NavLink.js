@@ -44,7 +44,7 @@ class NavLink extends Component {
 
   render() {
     return (
-      <StyledNavLink to={this.props.to}>
+      <StyledNavLink onClick={this.props.onClick} to={this.props.to}>
         {this.props.children}
         <Background></Background>
       </StyledNavLink>

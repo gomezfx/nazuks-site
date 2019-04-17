@@ -54,6 +54,7 @@ const Title = styled.div`
   //left: 0;
   line-height: 1;
   transition: all .7s cubic-bezier(.075,.82,.165,1);
+  padding: 5px 0;
 `;
 
 const SubTitle = styled.div`
@@ -72,6 +73,18 @@ const TextWrapper = styled.div`
   left: 0;
   transition: all .7s cubic-bezier(.075,.82,.165,1);
 
+`;
+
+const StoryType = styled.div`
+  font-size: 1.2rem;
+  font-family: 'Circular';
+  transition: all .7s cubic-bezier(.075,.82,.165,1);
+  padding: 3px 5px;
+  background: black;
+  color: white;
+  display: inline-block;
+  text-transform: uppercase;
+  color: #01FF70;
 `;
 
 const StoryWrapper = styled.div`
@@ -93,14 +106,18 @@ const StoryWrapper = styled.div`
 
     }
 
-    ${SubTitle},
+    //${SubTitle},
     ${Title} {
       color: black;
       -webkit-text-stroke-width: 1px;
     }
+
+    ${StoryType} {
+      color: black;
+      background: #01FF70;
+    }
   }
 `;
-
 
 class Story extends Component {
   constructor(props) {
@@ -124,8 +141,9 @@ class Story extends Component {
           <StoryWrapper visible={this.state.revealed}>
             <ImageWrapper><Image image={this.props.image}></Image></ImageWrapper>
             <TextWrapper>
-            <Title>{this.props.title}</Title>
-            <SubTitle>The FADER (2017)</SubTitle>
+              <StoryType>{this.props.type}</StoryType>
+              <Title>{this.props.title}</Title>
+              <SubTitle>{this.props.publication}, {this.props.date}</SubTitle>
             </TextWrapper>
           </StoryWrapper>
           </div>

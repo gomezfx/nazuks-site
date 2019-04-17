@@ -37,13 +37,16 @@ const RouteContainer = posed.div({
 
 const AppWrapper = styled.div`
   background: #DEDEDE;
-  overflow: hidden;
   //padding: 10rem 1.953rem 0 1.953rem;
-  //padding-top: 75px;
+
   min-height: 100vh;
   max-width: 1680px;
   margin: 0 auto;
   position: relative;
+
+  @media (max-width: 767px) {
+    padding-top: 75px;
+  }
 `;
 
 const FadeIn = styled.div`
@@ -128,63 +131,87 @@ const Writing = () => {
       </TitleCard> */}
       <StoryContainer>
         <Story
+          type="Interview"
           title="Gunna wants you to go out and get it"
-          subtitle="The FADER (2017)"
+          publication="The FADER"
+          date="2017"
           image={img1}>
         </Story>
         <Story
+          type="Essay"
           title="duis convallis convallis tellus id"
-          subtitle="The FADER (2017)"
+          publication="The FADER"
+          date="2017"
           image={img2}>
         </Story>
         <Story
+          type="Essay"
           title="pulvinar neque laoreet suspendisse interdum"
-          subtitle="The FADER (2017)"
+          publication="The FADER"
+          date="2017"
           image={img3}>
         </Story>
         <Story
+          type="Interview"
           title="laoreet sit amet"
-          subtitle="The FADER (2017)"
+          publication="The FADER"
+          date="2017"
           image={img4}>
         </Story>
         <Story
+          type="Interview"
           title="dictumst quisque sagittis purus"
-          subtitle="The FADER (2017)"
+          publication="The FADER"
+          date="2017"
           image={img5}>
         </Story>
         <Story
+          type="Profile"
           title="aliquam"
-          subtitle="The FADER (2017)"
+          publication="The FADER"
+          date="2017"
           image={img1}>
         </Story>
         <Story
+          type="Interview"
           title="viverra maecenas accumsan lacus"
-          subtitle="The FADER (2017)"
+          publication="The FADER"
+          date="2017"
           image={img2}>
         </Story>
         <Story
+          type="Profile"
           title="accumsan tortor posuere"
-          subtitle="The FADER (2017)"
+          publication="The FADER"
+          date="2017"
           image={img3}>
         </Story>
         <Story
+          type="Profile"
           title="suspendisse ultrices gravida dictum fusce ut"
-          subtitle="The FADER (2017)"
+          publication="The FADER"
+          date="2017"
           image={img4}>
         </Story>
         <Story
+          type="Interview"
           title="vulputate dignissim suspendisse in"
-          subtitle="The FADER (2017)"
+          publication="The FADER"
+          date="2017"
           image={img5}>
         </Story>
         <Story
+          type="Essay"
           title="feugiat sed"
-          subtitle="The FADER (2017)"
+          publication="The FADER"
+          date="2017"
           image={img1}>
         </Story>
         <Story
+          type="Profile"
           title="eu augue ut lectus"
-          subtitle="The FADER (2017)"
+          publication="The FADER"
+          date="2017"
           image={img2}>
         </Story>
       </StoryContainer>
@@ -237,7 +264,7 @@ const NavLinkWrapper = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
+  right: 0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -246,6 +273,7 @@ const NavLinkWrapper = styled.div`
   visibility:  ${props => props.visible ? 'visible' : 'hidden'};
 
   @media  (max-width: 767px) {
+    overflow: hidden;
     padding-top: 6rem;
     padding-left: 1.953rem;
     padding-right: 1.953rem;
@@ -254,7 +282,7 @@ const NavLinkWrapper = styled.div`
     opacity: ${props => props.visible ? '1' : '0'};
     transform: ${props => props.visible ? 'perspective(1000px) rotateX(0)' : 'perspective(1000px) rotateX(-90deg)'};
     transition: transform .75s cubic-bezier(.075,.82,.165,1),opacity .3s cubic-bezier(.075,.82,.165,1);
-    
+
     > * {
       transform: ${props => props.visible ? 'translateY(0%)' : 'translateY(20px)'};
       transition: all .75s cubic-bezier(.075,.82,.165,1);
@@ -291,19 +319,6 @@ const NavLogoWrapper = styled.div`
   transition: all 1.6s cubic-bezier(.075,.82,.165,1);
   opacity: ${props => props.fadeIn ? '1' : '0'};
 `;
-
-const SocialLinkWrapper = styled.div`
-  position: absolute;
-  right: 0;
-  top: 0;
-  display: flex;
-  align-items: flex-end;
-
-   > * {
-     margin-right: 1rem;
-   }
-`;
-
 const HamburgerIconWrapper = styled.div`
    position: absolute;
    z-index: 10;
@@ -315,7 +330,7 @@ const HamburgerIconWrapper = styled.div`
 
    @media (min-width: 768px) {
      display: none;
-   }    
+   }
 `;
 
 class App extends Component {
@@ -332,21 +347,26 @@ class App extends Component {
     setTimeout(() => {
       this.setState({ loaded: true })
     }, 500);
-    
+
     this.toggleMenu();
     window.addEventListener("resize", this.toggleMenu)
   }
 
   toggleMenu = () => {
-    let width = window.innerWidth; 
+    let width = window.innerWidth;
     let open = false;
-    console.log(width);
+
     if (width >= 768) {
       open = true;
     }
     this.setState({ menuOpen: open })
-    
-    console.log('here');
+  }
+
+  closeMenu = () => {
+    let width = window.innerWidth;
+    if (width < 768) {
+      this.setState({ menuOpen: false })
+    }
   }
 
   render() {
@@ -354,28 +374,22 @@ class App extends Component {
       <Route
         render={({ location }) => (
           <div className="App">
-            <AppWrapper>
+            <AppWrapper menuOpen={this.state.menuOpen}>
                 <HamburgerIconWrapper fadeIn={this.state.loaded}>
                   <HamburgerIcon open={this.state.menuOpen} onClick={e => this.setState({ menuOpen: !this.state.menuOpen })}></HamburgerIcon>
                 </HamburgerIconWrapper>
                 <NavLinkWrapper fadeIn={this.state.loaded} visible={this.state.menuOpen}>
-                  <NavLink to="/writing">Writing</NavLink>
-                  <NavLink to="/video">Video</NavLink>
-                  <NavLink to="/fashion">Fashion</NavLink>
-                  <NavLink to="/live+radio">live + radio</NavLink>
-                  <NavLink to="/s+s">s+s</NavLink>
-                  <NavLink to="/info">Info</NavLink>
+                  <NavLink onClick={this.closeMenu} to="/writing">Writing</NavLink>
+                  <NavLink onClick={this.closeMenu} to="/video">Video</NavLink>
+                  <NavLink onClick={this.closeMenu} to="/fashion">Fashion</NavLink>
+                  <NavLink onClick={this.closeMenu} to="/live+radio">live + radio</NavLink>
+                  <NavLink onClick={this.closeMenu} to="/s+s">s+s</NavLink>
+                  <NavLink onClick={this.closeMenu} to="/info">Info</NavLink>
                 </NavLinkWrapper>
                 <NavLogoWrapper  fadeIn={this.state.loaded}>
                   <NavLogo to="/">nazuk</NavLogo>
                 </NavLogoWrapper>
               <NavTop fadeIn={this.state.loaded}>
-
-
-                <SocialLinkWrapper>
-                  <SocialLink to="http://www.instagram.com" src={instagramSvg}></SocialLink>
-                  <SocialLink to="http://www.twitter.com" src={twitterSvg}></SocialLink>
-                </SocialLinkWrapper>
               </NavTop>
 
               <FadeIn  fadeIn={this.state.loaded}>
