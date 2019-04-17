@@ -70,23 +70,59 @@ const Title = styled.div`
   transition: all .7s cubic-bezier(.075,.82,.165,1);
 `;
 
-const SubTitle = styled.div`
-  font-size: 1.2rem;
-  font-family: 'Circular';
-  color: black;
-  //position: absolute;
-  //bottom: -2rem;
-  transition: all .7s cubic-bezier(.075,.82,.165,1);
-
-`;
-
 const TextWrapper = styled.div`
-  position: absolute;
-  bottom: -2.9rem;
-  left: 0;
+  //position: absolute;
+  //bottom: -2.9rem;
+  //left: 0;
+  //transition: all .7s cubic-bezier(.075,.82,.165,1);
+  padding-top: 1rem;
+  //transform: translateY(calc(-100% - 2rem));
+  transform: translateY(calc(-50% - 1rem));
   transition: all .7s cubic-bezier(.075,.82,.165,1);
-
+  position: absolute;
 `;
+
+const Date = styled.div`
+font-size: 1.2rem;
+font-family: 'Circular';
+transition: all .7s cubic-bezier(.075,.82,.165,1);
+color: black;
+`;
+
+const Text = styled.div`
+font-size: 3rem;
+font-family: 'DrukWide';
+font-weight: bold;
+text-transform: uppercase;
+-webkit-text-stroke-width: 2px;
+-webkit-text-stroke-color: #000000;
+color: transparent;;
+letter-spacing: .2rem;
+//position: absolute;
+//bottom: 0;
+//left: 0;
+line-height: 1;
+transition: all .7s cubic-bezier(.075,.82,.165,1);
+padding: 5px 0;
+`;
+
+const Type = styled.div`
+font-size: 1.2rem;
+font-family: 'Circular';
+transition: all .7s cubic-bezier(.075,.82,.165,1);
+padding: 5px 7px;
+background: black;
+color: #DEDEDE;
+display: inline-block;
+text-transform: uppercase;
+`;
+
+const Role = styled(Type)`
+  color: black;
+  background: transparent;
+  margin-left: .5rem;
+`;
+
 
 const StoryWrapper = styled.div`
   cursor: pointer;
@@ -103,14 +139,12 @@ const StoryWrapper = styled.div`
     }
 
     ${TextWrapper} {
-      transform: scale(1.3);
-
+      //transform: scale(1.3);
+      transform: translateY(0);
     }
 
-    ${SubTitle},
-    ${Title} {
+    ${Text} {
       color: black;
-      -webkit-text-stroke-width: 1px;
     }
 
     video {
@@ -144,10 +178,11 @@ class Video extends Component {
                 <Image image={this.props.image}></Image>
                 <video autoplay="autoplay" muted loop src={this.props.video}></video>
             </ImageWrapper>
-            {/* <TextWrapper>
-            <Title>{this.props.title}</Title>
-            <SubTitle>The FADER (2017)</SubTitle>
-            </TextWrapper> */}
+            <TextWrapper>
+              <Type>{this.props.type}</Type><Role>{this.props.role}</Role>
+              <Text>{this.props.text}</Text>
+              <Date>{this.props.date}</Date>
+            </TextWrapper>
           </StoryWrapper>
           </div>
           {/* <Title>{this.props.children}</Title>

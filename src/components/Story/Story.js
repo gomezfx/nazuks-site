@@ -68,10 +68,9 @@ const SubTitle = styled.div`
 `;
 
 const TextWrapper = styled.div`
-  position: absolute;
-  bottom: -2.9rem;
-  left: 0;
+  transform: translateY(-50%);
   transition: all .7s cubic-bezier(.075,.82,.165,1);
+  position: absolute;
 
 `;
 
@@ -79,12 +78,12 @@ const StoryType = styled.div`
   font-size: 1.2rem;
   font-family: 'Circular';
   transition: all .7s cubic-bezier(.075,.82,.165,1);
-  padding: 3px 5px;
+  padding: 5px 7px;
   background: black;
   color: white;
   display: inline-block;
   text-transform: uppercase;
-  color: #01FF70;
+  color: #DEDEDE;
 `;
 
 const StoryWrapper = styled.div`
@@ -102,8 +101,7 @@ const StoryWrapper = styled.div`
     }
 
     ${TextWrapper} {
-      transform: scale(1.3);
-
+      transform: scale(1.3) translateY(-50%);
     }
 
     //${SubTitle},
@@ -113,8 +111,8 @@ const StoryWrapper = styled.div`
     }
 
     ${StoryType} {
-      color: black;
-      background: #01FF70;
+      //color: black;
+      //background: #01FF70;
     }
   }
 `;

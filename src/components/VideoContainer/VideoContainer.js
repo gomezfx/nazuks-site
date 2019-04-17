@@ -9,9 +9,13 @@ const VideoWrapper =  styled.div`
     align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
-    width: 80%;
     margin: 0 auto;
-    padding-bottom: 200px;
+    padding-bottom: calc(200px + 3rem);
+
+    @media (min-width: 768px) {
+      width: 80%;
+    }
+
 `;
 
 const Scrollable = styled.div`
@@ -34,13 +38,13 @@ const Col = styled.div`
   }
   
   > ${VideoItem} {
-    margin-top: 200px;
+    margin-top: calc(200px + 3rem);
     margin-left: auto;
     margin-right: auto;
-    width: 70%
+    width: 100%
 
-    &:nth-child(odd) {
-        width: 70%
+    @media (min-width: 768px) {
+      width: 70%;
     }
   }
   

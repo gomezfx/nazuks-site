@@ -9,9 +9,13 @@ const StoryWrapper =  styled.div`
     align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     padding-bottom: 200px;
+
+    @media (min-width: 768px) {
+      width: 80%;
+    }
 `;
 
 

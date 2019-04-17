@@ -46,6 +46,8 @@ const AppWrapper = styled.div`
 
   @media (max-width: 767px) {
     padding-top: 75px;
+    padding-left: 1.953rem;
+    padding-right: 1.953rem;
   }
 `;
 
@@ -77,7 +79,6 @@ const Emoji = styled.div`
 
 const IndexWrapper = styled.div`
   height: 100vh;
-  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -223,11 +224,46 @@ const VideoSection = () => {
   return (
     <VideoWrapper>
       <VideoContainer>
-        <Video video={videoclip} image={img1}></Video>
-        <Video video={videoclip} image={img2}></Video>
-        <Video video={videoclip} image={img3}></Video>
-        <Video video={videoclip} image={img4}></Video>
-        <Video video={videoclip} image={img5}></Video>
+        <Video
+          video={videoclip}
+          image={img1}
+          type="Documentary"
+          role="associate producer"
+          text="Family Business, starring SahBabii and family"
+          date="2017">
+        </Video>
+        <Video
+          video={videoclip}
+          image={img2}
+          type="Documentary"
+          role="associate producer"
+          text="Family Business, starring SahBabii and family"
+          date="2017">
+        </Video>
+        <Video
+          video={videoclip}
+          image={img3}
+          type="Documentary"
+          role="associate producer"
+          text="Family Business, starring SahBabii and family"
+          date="2017">
+        </Video>
+        <Video
+          video={videoclip}
+          image={img4}
+          type="Documentary"
+          role="associate producer"
+          text="Family Business, starring SahBabii and family"
+          date="2017">
+        </Video>
+        <Video
+          video={videoclip}
+          image={img5}
+          type="Documentary"
+          role="associate producer"
+          text="Family Business, starring SahBabii and family"
+          date="2017">
+        </Video>
       </VideoContainer>
     </VideoWrapper>
   )
@@ -292,7 +328,7 @@ const NavLinkWrapper = styled.div`
 
   @media (min-width: 768px) {
     background: transparent;
-    position: absolute;
+    position: fixed;
     top: 1.953rem;
     left: 1.953rem;
     bottom: auto;
@@ -313,7 +349,7 @@ const NavLinkWrapper = styled.div`
 const NavLogoWrapper = styled.div`
   z-index: 10;
   top: 1.953rem;
-  position: absolute;
+  position: fixed;
   left: 50%;
   transform: ${props => props.fadeIn ? 'translate(-50%, 0%)' : 'translate(-50%, 20px)'};
   transition: all 1.6s cubic-bezier(.075,.82,.165,1);
