@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "d3919f829ce57cd803e9",
-    "url": "/nazuks-site/static/css/main.f6da390a.chunk.css"
+    "revision": "c6ae170579259bf1f75f",
+    "url": "/nazuks-site/static/css/main.cb77274a.chunk.css"
   },
   {
-    "revision": "d3919f829ce57cd803e9",
-    "url": "/nazuks-site/static/js/main.d3919f82.chunk.js"
+    "revision": "c6ae170579259bf1f75f",
+    "url": "/nazuks-site/static/js/main.c6ae1705.chunk.js"
   },
   {
-    "revision": "3a074a39a6b3a00743c9",
-    "url": "/nazuks-site/static/js/1.3a074a39.chunk.js"
+    "revision": "057cde653bdfc9e1ef58",
+    "url": "/nazuks-site/static/js/1.057cde65.chunk.js"
   },
   {
     "revision": "1fe027a4bcca126af481",
@@ -40,14 +40,6 @@ self.__precacheManifest = [
     "url": "/nazuks-site/static/media/img5.715b7a0a.png"
   },
   {
-    "revision": "be06689853aec102607f5e54e6fd2dfa",
-    "url": "/nazuks-site/static/media/twitter.be066898.svg"
-  },
-  {
-    "revision": "662a4f1472618eb2eb3b507d7459741f",
-    "url": "/nazuks-site/static/media/instagram.662a4f14.svg"
-  },
-  {
     "revision": "0afbafb309f127b2226ab8bbe60e9dc5",
     "url": "/nazuks-site/static/media/DrukWide-Medium.0afbafb3.otf"
   },
@@ -64,7 +56,15 @@ self.__precacheManifest = [
     "url": "/nazuks-site/static/media/logo.5d5d9eef.svg"
   },
   {
-    "revision": "159eba2fcd660df528721aa977b15d69",
+    "revision": "be06689853aec102607f5e54e6fd2dfa",
+    "url": "/nazuks-site/static/media/twitter.be066898.svg"
+  },
+  {
+    "revision": "662a4f1472618eb2eb3b507d7459741f",
+    "url": "/nazuks-site/static/media/instagram.662a4f14.svg"
+  },
+  {
+    "revision": "634c0d01a6019c4d31ba36bef62b6d94",
     "url": "/nazuks-site/index.html"
   }
 ];

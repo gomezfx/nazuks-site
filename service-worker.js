@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/nazuks-site/precache-manifest.07cbda85d843cf7fda36d5cef801880a.js"
+  "/nazuks-site/precache-manifest.c166a5d8b3b12cb38323242e36d0ea7b.js"
 );
 
 workbox.clientsClaim();
