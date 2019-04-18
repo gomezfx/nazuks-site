@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "bd1ca8563efd53169c95",
-    "url": "/nazuks-site/static/css/main.cb77274a.chunk.css"
+    "revision": "071fe74eacdc8a5bec6e",
+    "url": "/nazuks-site/static/css/main.dc8d2194.chunk.css"
   },
   {
-    "revision": "bd1ca8563efd53169c95",
-    "url": "/nazuks-site/static/js/main.bd1ca856.chunk.js"
+    "revision": "071fe74eacdc8a5bec6e",
+    "url": "/nazuks-site/static/js/main.071fe74e.chunk.js"
   },
   {
-    "revision": "0c57660c165801cea8e7",
-    "url": "/nazuks-site/static/js/1.0c57660c.chunk.js"
+    "revision": "f034cd5199a4edf1c355",
+    "url": "/nazuks-site/static/js/1.f034cd51.chunk.js"
   },
   {
     "revision": "1fe027a4bcca126af481",
@@ -64,7 +64,7 @@ self.__precacheManifest = [
     "url": "/nazuks-site/static/media/instagram.662a4f14.svg"
   },
   {
-    "revision": "2552ce821a2975bd0050483060943723",
+    "revision": "3da5ec70a6422c0816b4728495a38d3c",
     "url": "/nazuks-site/index.html"
   }
 ];
