@@ -14,6 +14,7 @@ import SplashImage from './components/SplashImage/SplashImage';
 import Story from './components/Story/Story';
 import StoryContainer from './components/StoryContainer/StoryContainer';
 import VideoContainer from './components/VideoContainer/VideoContainer';
+import InfoContainer from './components/InfoContainer/InfoContainer';
 import Video from './components/Video/Video';
 
 
@@ -45,7 +46,7 @@ const AppWrapper = styled.div`
   position: relative;
 
   @media (max-width: 767px) {
-    padding-top: 75px;
+    //padding-top: 75px;
     padding-left: 1.953rem;
     padding-right: 1.953rem;
   }
@@ -107,6 +108,10 @@ const SnSWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+const InfoWrapper = styled.div`
+  width: 100%;
 `;
 
 const Index = () => {
@@ -285,6 +290,18 @@ const SnS = () => {
   )
 }
 
+const Info = () => {
+  return (
+    <InfoWrapper>
+      <InfoContainer>
+        <p>Real earnest fan of good music and cool things. Producer, writer, strategist, artist-helper, thinker, maker for hire. </p>
+        <p>Contact: <a href="mailto:nazukkochhar@gmail.com">nazukkochhar@gmail.com</a></p>
+        <p>Resume available upon request. </p>
+      </InfoContainer>
+    </InfoWrapper>
+  )
+}
+
 const NavTop = styled.div`
   top: 1.953rem;
   left: 1.953rem;
@@ -303,8 +320,9 @@ const NavLinkWrapper = styled.div`
   right: 0;
   min-height: 100vh;
   display: flex;
+  align-items: flex-start;
   flex-direction: column;
-  background: #01FF70;
+  background: var(--color-neon-green);
   z-index: 9;
   visibility:  ${props => props.visible ? 'visible' : 'hidden'};
 
@@ -339,10 +357,6 @@ const NavLinkWrapper = styled.div`
     transform: ${props => props.fadeIn ? 'translateY(0%)' : 'translateY(20px)'};
     transition: all 1.6s cubic-bezier(.075,.82,.165,1);
     opacity: ${props => props.fadeIn ? '1' : '0'};
-
-    > * {
-      margin-bottom: .25rem;
-    }
   }
 `;
 
@@ -437,6 +451,7 @@ class App extends Component {
                       <Route path="/video/" component={VideoSection} key="video" />
                       <Route path="/fashion/" component={Fashion} key="fashion" />
                       <Route path="/s+s/" component={SnS} key="sns" />
+                      <Route path="/info/" component={Info} key="info" />
                     </Switch>
                   </RouteContainer>
                 </PoseGroup>
