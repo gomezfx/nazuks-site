@@ -13,13 +13,10 @@ const Description =  styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  background: black;
+  background: var(--color-black);
   padding-top: 56.25%;
   position: relative;
   overflow: hidden;
-  &:hover {
-
-  }
 `;
 
 const Image = styled.div`
@@ -34,37 +31,21 @@ const Image = styled.div`
   background-blend-mode: overlay;
   background-size: cover;
   background-position: 50% 50%;
-  &:hover {
-
-  }
 `;
 
 
-const Title = styled.div`
-  font-size: 3rem;
-  font-family: 'DrukWide';
+const Title = styled.h2`
+  font-size: var(--h3-font-size);
   font-weight: bold;
   text-transform: uppercase;
   -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: #000000;
-  color: transparent;;
-  letter-spacing: .2rem;
-  //position: absolute;
-  //bottom: 0;
-  //left: 0;
-  line-height: 1;
+  -webkit-text-stroke-color: var(--color-black);
+  color: transparent;
+  letter-spacing: 2px;
   transition: all .7s cubic-bezier(.075,.82,.165,1);
   padding: 5px 0;
-`;
-
-const SubTitle = styled.div`
-  font-size: 1.2rem;
-  font-family: 'Circular';
-  color: black;
-  //position: absolute;
-  //bottom: -2rem;
-  transition: all .7s cubic-bezier(.075,.82,.165,1);
-
+  line-height: 1;
+  margin: 0;
 `;
 
 const TextWrapper = styled.div`
@@ -75,18 +56,22 @@ const TextWrapper = styled.div`
 `;
 
 const StoryType = styled.div`
-  font-size: 1.2rem;
-  font-family: 'Circular';
+  font-size: 1rem;
   transition: all .7s cubic-bezier(.075,.82,.165,1);
   padding: 5px 7px;
-  background: black;
-  color: white;
+  background: var(--color-black);
   display: inline-block;
   text-transform: uppercase;
-  color: #DEDEDE;
+  color: var(--color-light-gray);
 `;
 
-const StoryWrapper = styled.div`
+const SubTitle = styled.div`
+  font-size: 1rem;
+  color: var(--color-black);
+  transition: all .7s cubic-bezier(.075,.82,.165,1);
+`;
+
+const StyledStory = styled.section`
   cursor: pointer;
   transition-delay: .6s;
   transform-origin: top center;
@@ -104,15 +89,9 @@ const StoryWrapper = styled.div`
       transform: scale(1.3) translateY(-50%);
     }
 
-    //${SubTitle},
     ${Title} {
       color: black;
       -webkit-text-stroke-width: 1px;
-    }
-
-    ${StoryType} {
-      //color: black;
-      //background: #01FF70;
     }
   }
 `;
@@ -136,18 +115,15 @@ class Story extends Component {
     return (
       <Waypoint onEnter={() => this.reveal()}>
           <div>
-          <StoryWrapper visible={this.state.revealed}>
+          <StyledStory visible={this.state.revealed}>
             <ImageWrapper><Image image={this.props.image}></Image></ImageWrapper>
             <TextWrapper>
               <StoryType>{this.props.type}</StoryType>
               <Title>{this.props.title}</Title>
               <SubTitle>{this.props.publication}, {this.props.date}</SubTitle>
             </TextWrapper>
-          </StoryWrapper>
+          </StyledStory>
           </div>
-          {/* <Title>{this.props.children}</Title>
-          <Description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in nisi erat. Nullam vitae enim vel est volutpat sodales tincidunt tristique elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce lobortis commodo eleifend. Nam quis orci ligula. Cras id viverra arcu, ut consectetur metus. Suspendisse vel fermentum.</Description> */}
-
       </Waypoint>
     );
   }

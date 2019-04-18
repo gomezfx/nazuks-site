@@ -8,16 +8,16 @@ const Background = styled.div`
     right: 110%;
     left: -10%;
     top: 0;
-    background: #01FF70;
+    background: var(--color-neon-green);
     content: '';
     z-index: -1;
     transition: all 500ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
 `;
 
 const StyledNavLink = styled(Link)`
-  font-size: 10vw;
-  color: #000000;
-  font-family: 'DrukWide';
+  font-size: var(--h2-font-size);
+  color: var(--color-black);
+  font-family: var(--font-family-heading);
   text-transform: lowercase;
   text-decoration: none;
   position: relative;
@@ -36,10 +36,6 @@ const StyledNavLink = styled(Link)`
 class NavLink extends Component {
   constructor(props) {
     super(props);
-  }
-
-  componentDidMount() {
-
   }
 
   render() {

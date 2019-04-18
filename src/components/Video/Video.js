@@ -53,78 +53,51 @@ const Image = styled.div`
   
 `;
 
-
-const Title = styled.div`
-  font-size: 3rem;
-  font-family: 'DrukWide';
-  font-weight: bold;
-  text-transform: uppercase;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: #000000;
-  color: transparent;;
-  letter-spacing: .2rem;
-  //position: absolute;
-  //bottom: 0;
-  //left: 0;
-  line-height: 1;
-  transition: all .7s cubic-bezier(.075,.82,.165,1);
-`;
-
 const TextWrapper = styled.div`
-  //position: absolute;
-  //bottom: -2.9rem;
-  //left: 0;
-  //transition: all .7s cubic-bezier(.075,.82,.165,1);
   padding-top: 1rem;
-  //transform: translateY(calc(-100% - 2rem));
   transform: translateY(calc(-50% - 1rem));
   transition: all .7s cubic-bezier(.075,.82,.165,1);
   position: absolute;
 `;
 
 const Date = styled.div`
-font-size: 1.2rem;
-font-family: 'Circular';
-transition: all .7s cubic-bezier(.075,.82,.165,1);
-color: black;
+  font-size: 1rem;
+  transition: all .7s cubic-bezier(.075,.82,.165,1);
+  color: var(--color-black);
 `;
 
-const Text = styled.div`
-font-size: 3rem;
-font-family: 'DrukWide';
-font-weight: bold;
-text-transform: uppercase;
--webkit-text-stroke-width: 2px;
--webkit-text-stroke-color: #000000;
-color: transparent;;
-letter-spacing: .2rem;
-//position: absolute;
-//bottom: 0;
-//left: 0;
-line-height: 1;
-transition: all .7s cubic-bezier(.075,.82,.165,1);
-padding: 5px 0;
+const Text = styled.h2`
+  font-size: var(--h3-font-size);
+  font-weight: bold;
+  text-transform: uppercase;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: var(--color-black);
+  color: transparent;
+  letter-spacing: .2px;
+  margin: 0;
+  line-height: 1;
+  transition: all .7s cubic-bezier(.075,.82,.165,1);
+  padding: 5px 0;
 `;
 
 const Type = styled.div`
-font-size: 1.2rem;
-font-family: 'Circular';
-transition: all .7s cubic-bezier(.075,.82,.165,1);
-padding: 5px 7px;
-background: black;
-color: #DEDEDE;
-display: inline-block;
-text-transform: uppercase;
+  font-size: 1rem;
+  transition: all .7s cubic-bezier(.075,.82,.165,1);
+  padding: 5px 7px;
+  background: var(--color-black);
+  color: var(--color-light-gray);
+  display: inline-block;
+  text-transform: uppercase;
 `;
 
 const Role = styled(Type)`
-  color: black;
+  color: var(--color-black);
   background: transparent;
   margin-left: .5rem;
 `;
 
 
-const StoryWrapper = styled.div`
+const StyledVideo = styled.div`
   cursor: pointer;
   transition-delay: .6s;
   transform-origin: top center;
@@ -139,12 +112,11 @@ const StoryWrapper = styled.div`
     }
 
     ${TextWrapper} {
-      //transform: scale(1.3);
       transform: translateY(0);
     }
 
     ${Text} {
-      color: black;
+      color: var(--color-black);
     }
 
     video {
@@ -173,7 +145,7 @@ class Video extends Component {
     return (
       <Waypoint onEnter={() => this.reveal()}>
           <div>
-          <StoryWrapper visible={this.state.revealed}>
+          <StyledVideo visible={this.state.revealed}>
             <ImageWrapper>
                 <Image image={this.props.image}></Image>
                 <video autoplay="autoplay" muted loop src={this.props.video}></video>
@@ -183,11 +155,8 @@ class Video extends Component {
               <Text>{this.props.text}</Text>
               <Date>{this.props.date}</Date>
             </TextWrapper>
-          </StoryWrapper>
+          </StyledVideo>
           </div>
-          {/* <Title>{this.props.children}</Title>
-          <Description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in nisi erat. Nullam vitae enim vel est volutpat sodales tincidunt tristique elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce lobortis commodo eleifend. Nam quis orci ligula. Cras id viverra arcu, ut consectetur metus. Suspendisse vel fermentum.</Description> */}
-
       </Waypoint>
     );
   }
