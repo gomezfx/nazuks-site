@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "071fe74eacdc8a5bec6e",
-    "url": "/nazuks-site/static/css/main.dc8d2194.chunk.css"
+    "revision": "13cbebb9c302604a77da",
+    "url": "/nazuks-site/static/css/main.4c178bac.chunk.css"
   },
   {
-    "revision": "071fe74eacdc8a5bec6e",
-    "url": "/nazuks-site/static/js/main.071fe74e.chunk.js"
+    "revision": "13cbebb9c302604a77da",
+    "url": "/nazuks-site/static/js/main.13cbebb9.chunk.js"
   },
   {
-    "revision": "f034cd5199a4edf1c355",
-    "url": "/nazuks-site/static/js/1.f034cd51.chunk.js"
+    "revision": "c983e6dbe8150cea9fe4",
+    "url": "/nazuks-site/static/js/1.c983e6db.chunk.js"
   },
   {
     "revision": "1fe027a4bcca126af481",
@@ -40,6 +40,18 @@ self.__precacheManifest = [
     "url": "/nazuks-site/static/media/img5.715b7a0a.png"
   },
   {
+    "revision": "7be1a88592fb26274514cbebc2415438",
+    "url": "/nazuks-site/static/media/fashion1.7be1a885.jpg"
+  },
+  {
+    "revision": "3ef808b48f2be9f8ac363726324587e2",
+    "url": "/nazuks-site/static/media/fashion2.3ef808b4.jpg"
+  },
+  {
+    "revision": "5fe6aca102f59ace1aad60a4d5bc579a",
+    "url": "/nazuks-site/static/media/fashion3.5fe6aca1.jpg"
+  },
+  {
     "revision": "0afbafb309f127b2226ab8bbe60e9dc5",
     "url": "/nazuks-site/static/media/DrukWide-Medium.0afbafb3.otf"
   },
@@ -64,7 +76,7 @@ self.__precacheManifest = [
     "url": "/nazuks-site/static/media/instagram.662a4f14.svg"
   },
   {
-    "revision": "3da5ec70a6422c0816b4728495a38d3c",
+    "revision": "2961c11596b35c1948bb66a69ee3700e",
     "url": "/nazuks-site/index.html"
   }
 ];
