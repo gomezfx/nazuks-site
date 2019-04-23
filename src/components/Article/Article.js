@@ -14,7 +14,7 @@ const Description =  styled.div`
 
 const ImageWrapper = styled.div`
   background: var(--color-black);
-  padding-top: 56.25%;
+  padding-top: ${props => props.landscape ? '56.25%' : '105%'};
   position: relative;
   overflow: hidden;
 `;
@@ -63,6 +63,12 @@ const ArticleType = styled.div`
   display: inline-block;
   text-transform: uppercase;
   color: var(--color-light-gray);
+`;
+
+const ArticleSubtype = styled(ArticleType)`
+  color: var(--color-black);
+  background: transparent;
+  margin-left: .3rem;
 `;
 
 const SubTitle = styled.div`
@@ -116,11 +122,11 @@ class Article extends Component {
       <Waypoint onEnter={() => this.reveal()}>
           <div>
           <StyledArticle visible={this.state.revealed}>
-            <ImageWrapper><Image image={this.props.image}></Image></ImageWrapper>
+            <ImageWrapper landscape={this.props.aspectRatio !== 'portrait' ? true : false}><Image image={this.props.image}></Image></ImageWrapper>
             <TextWrapper>
-              <ArticleType>{this.props.type}</ArticleType>
+              <ArticleType>{this.props.type}</ArticleType><ArticleSubtype>{this.props.subtype}</ArticleSubtype>
               <Title>{this.props.title}</Title>
-              <SubTitle>{this.props.publication}, {this.props.date}</SubTitle>
+              <SubTitle>{this.props.publication}{this.props.publication && this.props.date ? ', ' : ''}{this.props.date}</SubTitle>
             </TextWrapper>
           </StyledArticle>
           </div>

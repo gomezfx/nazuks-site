@@ -93,7 +93,7 @@ const Type = styled.div`
 const Role = styled(Type)`
   color: var(--color-black);
   background: transparent;
-  margin-left: .5rem;
+  margin-left: .3rem;
 `;
 
 

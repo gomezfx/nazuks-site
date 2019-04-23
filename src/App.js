@@ -28,6 +28,9 @@ import img2 from './images/img2.png'
 import img3 from './images/img3.png'
 import img4 from './images/img4.png'
 import img5 from './images/img5.png'
+import fashionImg1 from './images/fashion1.jpg'
+import fashionImg2 from './images/fashion2.jpg'
+import fashionImg3 from './images/fashion3.jpg'
 
 import videoclip from './videos/videoclip.mp4'
 import HamburgerIcon from './components/HamburgerIcon/HamburgerIcon';
@@ -97,10 +100,8 @@ const VideoWrapper = styled.div`
 `;
 
 const FashionWrapper = styled.div`
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
 `;
 
 const SnSWrapper = styled.div`
@@ -277,7 +278,32 @@ const VideoSection = () => {
 const Fashion = () => {
   return (
     <FashionWrapper>
-      FASHION
+      <TwoColumnContainer>
+      <Article
+          aspectRatio="portrait"
+          type="Editorial"
+          subtype="concept, creative direction, production"
+          title="A closer look at soccer’s most slept on item: the goalie glove"
+          date="2018"
+          image={fashionImg1}>
+        </Article>
+        <Article
+          aspectRatio="portrait"
+          type="Editorial"
+          subtype="creative direction, production"
+          title="The best fall clothes for breaking the rules"
+          date="2018"
+          image={fashionImg2}>
+        </Article>
+        <Article
+          aspectRatio="portrait"
+          type="Editorial"
+          subtype="styling, direction, production"
+          title="Exploring the texture spectrum in anticipation of fall"
+          date="2017"
+          image={fashionImg3}>
+        </Article>
+      </TwoColumnContainer>
     </FashionWrapper>
   )
 }
