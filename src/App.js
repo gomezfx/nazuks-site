@@ -4,6 +4,7 @@ import './App.css';
 import styled from 'styled-components';
 import posed, { PoseGroup } from 'react-pose';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { withRouter } from "react-router";
 
 // Components
 import NavigationLink from './components/NavigationLink/NavigationLink';
@@ -11,8 +12,8 @@ import NavLink from './components/NavLink/NavLink';
 import NavLogo from './components/NavLogo/NavLogo';
 import SocialLink from './components/SocialLink/SocialLink';
 import SplashImage from './components/SplashImage/SplashImage';
-import Story from './components/Story/Story';
-import StoryContainer from './components/StoryContainer/StoryContainer';
+import Article from './components/Article/Article';
+import TwoColumnContainer from './components/TwoColumnContainer/TwoColumnContainer';
 import VideoContainer from './components/VideoContainer/VideoContainer';
 import InfoContainer from './components/InfoContainer/InfoContainer';
 import Video from './components/Video/Video';
@@ -126,7 +127,6 @@ const TitleCard = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  //background: black;
 `;
 
 const Writing = () => {
@@ -135,92 +135,92 @@ const Writing = () => {
       {/* <TitleCard>
         WRITING
       </TitleCard> */}
-      <StoryContainer>
-        <Story
+      <TwoColumnContainer>
+        <Article
           type="Interview"
           title="Gunna wants you to go out and get it"
           publication="The FADER"
           date="2017"
           image={img1}>
-        </Story>
-        <Story
+        </Article>
+        <Article
           type="Essay"
           title="duis convallis convallis tellus id"
           publication="The FADER"
           date="2017"
           image={img2}>
-        </Story>
-        <Story
+        </Article>
+        <Article
           type="Essay"
           title="pulvinar neque laoreet suspendisse interdum"
           publication="The FADER"
           date="2017"
           image={img3}>
-        </Story>
-        <Story
+        </Article>
+        <Article
           type="Interview"
           title="laoreet sit amet"
           publication="The FADER"
           date="2017"
           image={img4}>
-        </Story>
-        <Story
+        </Article>
+        <Article
           type="Interview"
           title="dictumst quisque sagittis purus"
           publication="The FADER"
           date="2017"
           image={img5}>
-        </Story>
-        <Story
+        </Article>
+        <Article
           type="Profile"
           title="aliquam"
           publication="The FADER"
           date="2017"
           image={img1}>
-        </Story>
-        <Story
+        </Article>
+        <Article
           type="Interview"
           title="viverra maecenas accumsan lacus"
           publication="The FADER"
           date="2017"
           image={img2}>
-        </Story>
-        <Story
+        </Article>
+        <Article
           type="Profile"
           title="accumsan tortor posuere"
           publication="The FADER"
           date="2017"
           image={img3}>
-        </Story>
-        <Story
+        </Article>
+        <Article
           type="Profile"
           title="suspendisse ultrices gravida dictum fusce ut"
           publication="The FADER"
           date="2017"
           image={img4}>
-        </Story>
-        <Story
+        </Article>
+        <Article
           type="Interview"
           title="vulputate dignissim suspendisse in"
           publication="The FADER"
           date="2017"
           image={img5}>
-        </Story>
-        <Story
+        </Article>
+        <Article
           type="Essay"
           title="feugiat sed"
           publication="The FADER"
           date="2017"
           image={img1}>
-        </Story>
-        <Story
+        </Article>
+        <Article
           type="Profile"
           title="eu augue ut lectus"
           publication="The FADER"
           date="2017"
           image={img2}>
-        </Story>
-      </StoryContainer>
+        </Article>
+      </TwoColumnContainer>
     </WritingWrapper>
   )
 }
@@ -368,6 +368,10 @@ const NavLogoWrapper = styled.div`
   transform: ${props => props.fadeIn ? 'translate(-50%, 0%)' : 'translate(-50%, 20px)'};
   transition: all 1.6s cubic-bezier(.075,.82,.165,1);
   opacity: ${props => props.fadeIn ? '1' : '0'};
+
+  @media (min-width: 768px) {
+    transform: ${props => props.fadeIn && !props.moveLeft ? 'translate(-50%, 0%)' : ( props.fadeIn && props.moveLeft ? 'translate(calc(-50vw + 10vw + 3rem), 0%)' : 'translate(-50%, 20px)') };
+  }
 `;
 const HamburgerIconWrapper = styled.div`
    position: absolute;
@@ -384,12 +388,14 @@ const HamburgerIconWrapper = styled.div`
 `;
 
 class App extends Component {
+
   constructor(props) {
     super(props);
 
     this.state = {
       loaded: false,
-      menuOpen: false
+      menuOpen: false,
+      onInfoPage: false
     }
   }
 
@@ -400,6 +406,13 @@ class App extends Component {
 
     this.toggleMenu();
     window.addEventListener("resize", this.toggleMenu)
+    this.onRouteChanged();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      this.onRouteChanged();
+    }
   }
 
   toggleMenu = () => {
@@ -419,10 +432,13 @@ class App extends Component {
     }
   }
 
+  onRouteChanged() {
+    this.setState({ onInfoPage: this.props.location.pathname === '/info' })
+  }
+
   render() {
     return (
-      <Route
-        render={({ location }) => (
+
           <div className="App">
             <AppWrapper menuOpen={this.state.menuOpen}>
                 <HamburgerIconWrapper fadeIn={this.state.loaded}>
@@ -436,7 +452,7 @@ class App extends Component {
                   <NavLink onClick={this.closeMenu} to="/s+s">s+s</NavLink>
                   <NavLink onClick={this.closeMenu} to="/info">Info</NavLink>
                 </NavLinkWrapper>
-                <NavLogoWrapper  fadeIn={this.state.loaded}>
+                <NavLogoWrapper  moveLeft={this.state.onInfoPage} fadeIn={this.state.loaded}>
                   <NavLogo to="/">nazuk</NavLogo>
                 </NavLogoWrapper>
               <NavTop fadeIn={this.state.loaded}>
@@ -444,8 +460,8 @@ class App extends Component {
 
               <FadeIn  fadeIn={this.state.loaded}>
                 <PoseGroup>
-                  <RouteContainer key={location.pathname}>
-                    <Switch location={location}>
+                  <RouteContainer key={this.props.location.pathname}>
+                    <Switch location={this.props.location}>
                       <Route path="/" exact component={Index} key="index" />
                       <Route path="/writing/" component={Writing} key="writing" />
                       <Route path="/video/" component={VideoSection} key="video" />
@@ -459,11 +475,10 @@ class App extends Component {
 
             </AppWrapper>
           </div>
-        )}
-      />
+
 
     );
   }
 }
 
-export default App;
+export default withRouter(App);

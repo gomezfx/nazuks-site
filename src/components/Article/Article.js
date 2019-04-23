@@ -55,7 +55,7 @@ const TextWrapper = styled.div`
 
 `;
 
-const StoryType = styled.div`
+const ArticleType = styled.div`
   font-size: 1rem;
   transition: all .7s cubic-bezier(.075,.82,.165,1);
   padding: 5px 7px;
@@ -71,7 +71,7 @@ const SubTitle = styled.div`
   transition: all .7s cubic-bezier(.075,.82,.165,1);
 `;
 
-const StyledStory = styled.section`
+const StyledArticle = styled.section`
   cursor: pointer;
   transition-delay: .6s;
   transform-origin: top center;
@@ -96,7 +96,7 @@ const StyledStory = styled.section`
   }
 `;
 
-class Story extends Component {
+class Article extends Component {
   constructor(props) {
     super(props);
 
@@ -115,18 +115,18 @@ class Story extends Component {
     return (
       <Waypoint onEnter={() => this.reveal()}>
           <div>
-          <StyledStory visible={this.state.revealed}>
+          <StyledArticle visible={this.state.revealed}>
             <ImageWrapper><Image image={this.props.image}></Image></ImageWrapper>
             <TextWrapper>
-              <StoryType>{this.props.type}</StoryType>
+              <ArticleType>{this.props.type}</ArticleType>
               <Title>{this.props.title}</Title>
               <SubTitle>{this.props.publication}, {this.props.date}</SubTitle>
             </TextWrapper>
-          </StyledStory>
+          </StyledArticle>
           </div>
       </Waypoint>
     );
   }
 }
 
-export default Story;
+export default Article;
