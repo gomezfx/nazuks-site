@@ -52,7 +52,7 @@ const TextWrapper = styled.div`
   transform: translateY(-50%);
   transition: all .7s cubic-bezier(.075,.82,.165,1);
   position: absolute;
-
+  min-width: 100%;
 `;
 
 const ArticleType = styled.div`
@@ -78,6 +78,7 @@ const SubTitle = styled.div`
 `;
 
 const StyledArticle = styled.section`
+  position: relative;
   cursor: pointer;
   transition-delay: .6s;
   transform-origin: top center;
@@ -86,6 +87,8 @@ const StyledArticle = styled.section`
   transition: transform 1.6s cubic-bezier(.075,.82,.165,1),opacity .3s cubic-bezier(.075,.82,.165,1);  
 
   &:hover {
+    z-index: 2;
+
     ${Image} {
       transform: scale(1.2);
       background-color: rgba(1, 255, 112, 0);
@@ -93,6 +96,18 @@ const StyledArticle = styled.section`
 
     ${TextWrapper} {
       transform: scale(1.3) translateY(-50%);
+      
+      // &:after {
+      //   position: absolute;
+      //   background: var(--color-white);
+      //   left: -1rem;
+      //   right: -1rem;
+      //   top: -1rem;
+      //   bottom: -1rem;
+      //   content: '';
+      //   z-index: -1;
+      //   opacity: .5;
+      // }
     }
 
     ${Title} {

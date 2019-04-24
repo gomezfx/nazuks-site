@@ -13,7 +13,7 @@ const VideoWrapper =  styled.div`
     padding-bottom: calc(200px + 3rem);
 
     @media (min-width: 768px) {
-      width: 80%;
+      width: 70%;
     }
 
 `;

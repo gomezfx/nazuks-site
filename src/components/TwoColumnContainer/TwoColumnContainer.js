@@ -14,7 +14,7 @@ const TwoColumnWrapper =  styled.div`
     padding-bottom: 200px;
 
     @media (min-width: 768px) {
-      width: 80%;
+      width: 70%;
     }
 `;
 
@@ -77,8 +77,8 @@ class TwoColumnContainer extends Component {
   }
 
   render() {
-    let even = this.props.children.filter((child, index) => (index % 2));
-    let odd = this.props.children.filter((child, index) => !(index % 2));
+    let even = this.props.children ? this.props.children.filter((child, index) => (index % 2)) : [];
+    let odd = this.props.children ? this.props.children.filter((child, index) => !(index % 2)) : [];
 
     return (
         <TwoColumnWrapper>
