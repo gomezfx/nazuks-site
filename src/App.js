@@ -28,6 +28,10 @@ import img2 from './images/img2.png'
 import img3 from './images/img3.png'
 import img4 from './images/img4.png'
 import img5 from './images/img5.png'
+import writingImg1 from './images/writing1.jpg'
+import writingImg2 from './images/writing2.jpg'
+import writingImg3 from './images/writing3.jpg'
+import writingImg4 from './images/writing4.jpg'
 import fashionImg1 from './images/fashion1.jpg'
 import fashionImg2 from './images/fashion2.jpg'
 import fashionImg3 from './images/fashion3.jpg'
@@ -105,12 +109,29 @@ const FashionWrapper = styled.div`
 `;
 
 const SnSWrapper = styled.div`
-  height: 100vh;
-  width: 100vw;
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
+
+const LiveRadioWrapper = styled.div`
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Page404Wrapper = styled.div`
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 
 const InfoWrapper = styled.div`
   width: 100%;
@@ -130,97 +151,24 @@ const TitleCard = styled.div`
   justify-content: center;
 `;
 
-const Writing = () => {
+const Writing = (props) => {
+  console.log(props.articles);
   return (
     <WritingWrapper>
-      {/* <TitleCard>
-        WRITING
-      </TitleCard> */}
       <TwoColumnContainer>
-        <Article
-          type="Interview"
-          title="Gunna wants you to go out and get it"
-          publication="The FADER"
-          date="2017"
-          image={img1}>
-        </Article>
-        <Article
-          type="Essay"
-          title="duis convallis convallis tellus id"
-          publication="The FADER"
-          date="2017"
-          image={img2}>
-        </Article>
-        <Article
-          type="Essay"
-          title="pulvinar neque laoreet suspendisse interdum"
-          publication="The FADER"
-          date="2017"
-          image={img3}>
-        </Article>
-        <Article
-          type="Interview"
-          title="laoreet sit amet"
-          publication="The FADER"
-          date="2017"
-          image={img4}>
-        </Article>
-        <Article
-          type="Interview"
-          title="dictumst quisque sagittis purus"
-          publication="The FADER"
-          date="2017"
-          image={img5}>
-        </Article>
-        <Article
-          type="Profile"
-          title="aliquam"
-          publication="The FADER"
-          date="2017"
-          image={img1}>
-        </Article>
-        <Article
-          type="Interview"
-          title="viverra maecenas accumsan lacus"
-          publication="The FADER"
-          date="2017"
-          image={img2}>
-        </Article>
-        <Article
-          type="Profile"
-          title="accumsan tortor posuere"
-          publication="The FADER"
-          date="2017"
-          image={img3}>
-        </Article>
-        <Article
-          type="Profile"
-          title="suspendisse ultrices gravida dictum fusce ut"
-          publication="The FADER"
-          date="2017"
-          image={img4}>
-        </Article>
-        <Article
-          type="Interview"
-          title="vulputate dignissim suspendisse in"
-          publication="The FADER"
-          date="2017"
-          image={img5}>
-        </Article>
-        <Article
-          type="Essay"
-          title="feugiat sed"
-          publication="The FADER"
-          date="2017"
-          image={img1}>
-        </Article>
-        <Article
-          type="Profile"
-          title="eu augue ut lectus"
-          publication="The FADER"
-          date="2017"
-          image={img2}>
-        </Article>
+        {
+          props.articles.map((writingArticle) => {
+            return (
+              <Article
+                type={writingArticle.type}
+                title={writingArticle.title}
+                publication={writingArticle.publication}
+                date={writingArticle.date}
+                image={writingArticle.image}>
+              </Article>
+            )
+          })
+        }
       </TwoColumnContainer>
     </WritingWrapper>
   )
@@ -316,6 +264,14 @@ const SnS = () => {
   )
 }
 
+const LiveRadio = () => {
+  return (
+    <LiveRadioWrapper>
+      Live + Radio
+    </LiveRadioWrapper>
+  )
+}
+
 const Info = () => {
   return (
     <InfoWrapper>
@@ -325,6 +281,14 @@ const Info = () => {
         <p>Resume available upon request. </p>
       </InfoContainer>
     </InfoWrapper>
+  )
+}
+
+const Page404 = () => {
+  return (
+    <Page404Wrapper>
+      <h1>4🤬4</h1>
+    </Page404Wrapper>
   )
 }
 
@@ -421,14 +385,35 @@ class App extends Component {
     this.state = {
       loaded: false,
       menuOpen: false,
-      onInfoPage: false
+      onInfoPage: false,
+      writingArticles: []
     }
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({ loaded: true })
-    }, 500);
+    let _this = this;
+    fetch('/pages/writing.json')
+    .then(function(response) {
+      return response.json();
+    }).then(function(json) {
+      console.log(JSON.stringify(json));
+
+      let articles = json.map((jsonItem) => {
+        let article = {};
+        article['title'] = jsonItem['title'];
+        article['type'] = jsonItem['type'];
+        article['publication'] = jsonItem['publication'];
+        article['date'] = jsonItem['date'];
+        article['image'] = jsonItem['image'];
+
+        return article;
+      });
+
+      _this.setState({ writingArticles: articles });
+      setTimeout(() => {
+        _this.setState({ loaded: true });
+      }, 500);
+    });
 
     this.toggleMenu();
     window.addEventListener("resize", this.toggleMenu)
@@ -436,6 +421,7 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    console.log(this.state.writingArticles);
     if (this.props.location !== prevProps.location) {
       this.onRouteChanged();
     }
@@ -488,12 +474,14 @@ class App extends Component {
                 <PoseGroup>
                   <RouteContainer key={this.props.location.pathname}>
                     <Switch location={this.props.location}>
-                      <Route path="/" exact component={Index} key="index" />
-                      <Route path="/writing/" component={Writing} key="writing" />
-                      <Route path="/video/" component={VideoSection} key="video" />
-                      <Route path="/fashion/" component={Fashion} key="fashion" />
-                      <Route path="/s+s/" component={SnS} key="sns" />
-                      <Route path="/info/" component={Info} key="info" />
+                      <Route path="/" exact component={Index} key="index" exact={true}/>
+                      <Route path="/writing/" render={() => <Writing articles={this.state.writingArticles}/>} key="writing" exact={true}/>
+                      <Route path="/video/" component={VideoSection} key="video" exact={true}/>
+                      <Route path="/fashion/" component={Fashion} key="fashion" exact={true}/>
+                      <Route path="/live+radio/" component={LiveRadio} key="liveradio" exact={true}/>
+                      <Route path="/s+s/" component={SnS} key="sns" exact={true}/>
+                      <Route path="/info/" component={Info} key="info" exact={true}/>
+                      <Route component={Page404}/>
                     </Switch>
                   </RouteContainer>
                 </PoseGroup>
