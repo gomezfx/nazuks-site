@@ -1,0 +1,79 @@
+[
+  {
+    "title": "The life of Pi’erre Bourne",
+    "type": "Profile",
+    "publication": "The FADER",
+    "date": "2018",
+    "image": "/images/writing1.jpg"
+  },
+  {
+    "title": "Gunna wants you to go out and get it",
+    "type": "Profile",
+    "publication": "The FADER",
+    "date": "2017",
+    "image": "/images/writing2.jpg"
+  },
+  {
+    "title": "Meet Kesha Lee, the engineer bringing your favorite Atlanta artists’ songs to life",
+    "type": "Interview",
+    "publication": "The FADER",
+    "date": "2017",
+    "image": "/images/writing3.jpg"
+  },
+  {
+    "title": "Hate5six is the internet’s hardcore goldmine",
+    "type": "Interview",
+    "publication": "The FADER",
+    "date": "2018",
+    "image": "/images/writing4.jpg"
+  },
+  {
+    "title": "For Carpet Company, every skateboard tells a story",
+    "type": "Interview",
+    "publication": "The FADER",
+    "date": "2018",
+    "image": "/images/writing5.jpg"
+  },
+  {
+    "title": "Ain’t no stopping Sister Nancy now",
+    "type": "Interview",
+    "publication": "The FADER",
+    "date": "2017",
+    "image": "/images/writing6.jpg"
+  },
+  {
+    "title": "How Standing On The Corner created a visceral snapshot of New York life",
+    "type": "Interview",
+    "publication": "The FADER",
+    "date": "2017",
+    "image": "/images/writing7.jpg"
+  },
+  {
+    "title": "Meet Jae5, the east London genre blender behind J Hus’s out of this world Afrobeats sound",
+    "type": "Interview",
+    "publication": "The FADER",
+    "date": "2017",
+    "image": "/images/writing8.jpg"
+  },
+  {
+    "title": "How Rvssian went from dancehall prodigy to Latin pop hitmaker",
+    "type": "Interview",
+    "publication": "The FADER",
+    "date": "2017",
+    "image": "/images/writing9.jpg"
+  },
+  {
+    "title": "Young Nudy, on damn-near everything",
+    "type": "Interview",
+    "publication": "The FADER",
+    "date": "2018",
+    "image": "/images/writing10.jpg"
+  },
+  {
+    "title": "The Good Company is for the kids",
+    "type": "Interview",
+    "publication": "The FADER",
+    "date": "2017",
+    "image": "/images/writing11.jpg"
+  }
+]
