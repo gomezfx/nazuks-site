@@ -155,7 +155,7 @@ const Writing = (props) => {
   console.log(props.articles);
   return (
     <WritingWrapper>
-      <TwoColumnContainer>
+      <TwoColumnContainer spacing={'1x'}>
         {
           props.articles.map((writingArticle) => {
             return (
@@ -226,12 +226,13 @@ const VideoSection = () => {
 const Fashion = () => {
   return (
     <FashionWrapper>
-      <TwoColumnContainer>
+      <TwoColumnContainer spacing={'2x'}>
       <Article
           aspectRatio="portrait"
           type="Editorial"
           subtype="concept, creative direction, production"
           title="A closer look at soccer’s most slept on item: the goalie glove"
+          publication="The FADER"
           date="2018"
           image={fashionImg1}>
         </Article>
@@ -240,6 +241,7 @@ const Fashion = () => {
           type="Editorial"
           subtype="creative direction, production"
           title="The best fall clothes for breaking the rules"
+          publication="The FADER"
           date="2018"
           image={fashionImg2}>
         </Article>
@@ -248,6 +250,7 @@ const Fashion = () => {
           type="Editorial"
           subtype="styling, direction, production"
           title="Exploring the texture spectrum in anticipation of fall"
+          publication="The FADER"
           date="2017"
           image={fashionImg3}>
         </Article>

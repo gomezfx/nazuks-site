@@ -91,7 +91,7 @@ const StyledArticle = styled.section`
 
     ${Image} {
       transform: scale(1.2);
-      background-color: rgba(1, 255, 112, 0);
+      background-color: rgba(1, 255, 112, .2);
     }
 
     ${TextWrapper} {

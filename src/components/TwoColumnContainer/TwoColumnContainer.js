@@ -11,7 +11,6 @@ const TwoColumnWrapper =  styled.div`
     flex-wrap: wrap;
     width: 100%;
     margin: 0 auto;
-    padding-bottom: 200px;
 
     @media (min-width: 768px) {
       width: 70%;
@@ -33,10 +32,11 @@ const ColLeft = styled.div`
 
     > *:first-child {
       margin-top: 0;
+      padding-top: 0;
     }
 
     > * {
-      margin-top: 200px;
+      padding-bottom: ${props => props.spacing === '1x' ? 'calc(56.25%/1.5)' : 'calc(105%/2.25)'};
     }
   }
 `;
@@ -49,8 +49,12 @@ const ColRight = styled.div`
     width: calc(50% - 75px);
     margin-left: 75px;
 
+    > *:first-child {
+      padding-top: ${props => props.spacing === '1x' ? 'calc(56.25%/1.5)' : 'calc(105%/2.25)'};
+    }
+
     > * {
-      margin-top: 200px;
+      padding-bottom: ${props => props.spacing === '1x' ? 'calc(56.25%/1.5)' : 'calc(105%/2.25)'};
     }
   }
 `;
@@ -81,14 +85,14 @@ class TwoColumnContainer extends Component {
     let odd = this.props.children ? this.props.children.filter((child, index) => !(index % 2)) : [];
 
     return (
-        <TwoColumnWrapper>
+        <TwoColumnWrapper spacing={this.props.spacing}>
           <ColMobile>{this.props.children}</ColMobile>
-          <ColLeft>
+          <ColLeft spacing={this.props.spacing}>
             {
               odd.map((child, index) => <ColItem>{child}</ColItem>)
             }
           </ColLeft>
-          <ColRight>
+          <ColRight spacing={this.props.spacing}>
             {
               even.map((child, index) => <ColItem>{child}</ColItem>)
             }
