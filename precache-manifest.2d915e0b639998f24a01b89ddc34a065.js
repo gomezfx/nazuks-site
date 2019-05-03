@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "ca5e849ccc00c6a4a303",
+    "revision": "d1c8ac30a40f61d041ed",
     "url": "/nazuks-site/static/css/main.d9bc252e.chunk.css"
   },
   {
-    "revision": "ca5e849ccc00c6a4a303",
-    "url": "/nazuks-site/static/js/main.ca5e849c.chunk.js"
+    "revision": "d1c8ac30a40f61d041ed",
+    "url": "/nazuks-site/static/js/main.d1c8ac30.chunk.js"
   },
   {
     "revision": "c29ca56aac88b7c3c164",
@@ -92,7 +92,7 @@ self.__precacheManifest = [
     "url": "/nazuks-site/static/media/writing4.172a3830.jpg"
   },
   {
-    "revision": "d17b313bf4e59cb9793ee0a51b421417",
+    "revision": "cbfcbbbd859a857cd9f6a9be920ee533",
     "url": "/nazuks-site/index.html"
   }
 ];
