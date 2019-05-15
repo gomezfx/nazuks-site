@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { withRouter } from "react-router";
 
 // Components
+import Loader from './components/Loader/Loader';
 import NavigationLink from './components/NavigationLink/NavigationLink';
 import NavLink from './components/NavLink/NavLink';
 import NavLogo from './components/NavLogo/NavLogo';
@@ -28,10 +29,6 @@ import img2 from './images/img2.png'
 import img3 from './images/img3.png'
 import img4 from './images/img4.png'
 import img5 from './images/img5.png'
-import writingImg1 from './images/writing1.jpg'
-import writingImg2 from './images/writing2.jpg'
-import writingImg3 from './images/writing3.jpg'
-import writingImg4 from './images/writing4.jpg'
 import fashionImg1 from './images/fashion1.jpg'
 import fashionImg2 from './images/fashion2.jpg'
 import fashionImg3 from './images/fashion3.jpg'
@@ -456,6 +453,7 @@ class App extends Component {
 
           <div className="App">
             <AppWrapper menuOpen={this.state.menuOpen}>
+                <Loader show={!this.state.loaded}></Loader>
                 <HamburgerIconWrapper fadeIn={this.state.loaded}>
                   <HamburgerIcon open={this.state.menuOpen} onClick={e => this.setState({ menuOpen: !this.state.menuOpen })}></HamburgerIcon>
                 </HamburgerIconWrapper>

@@ -2,7 +2,6 @@
   "name": "nazuks-site",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://gomezfx.github.io/nazuks-site",
   "dependencies": {
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
