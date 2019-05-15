@@ -149,7 +149,6 @@ const TitleCard = styled.div`
 `;
 
 const Writing = (props) => {
-  console.log(props.articles);
   return (
     <WritingWrapper>
       <TwoColumnContainer spacing={'1x'}>
@@ -161,7 +160,8 @@ const Writing = (props) => {
                 title={writingArticle.title}
                 publication={writingArticle.publication}
                 date={writingArticle.date}
-                image={writingArticle.image}>
+                image={writingArticle.image}
+                link={writingArticle.link}>
               </Article>
             )
           })
@@ -171,86 +171,51 @@ const Writing = (props) => {
   )
 }
 
-const VideoSection = () => {
+const VideoSection = (props) => {
   return (
     <VideoWrapper>
       <VideoContainer>
-        <Video
-          video={videoclip}
-          image={img1}
-          type="Documentary"
-          role="associate producer"
-          text="Family Business, starring SahBabii and family"
-          date="2017">
-        </Video>
-        <Video
-          video={videoclip}
-          image={img2}
-          type="Documentary"
-          role="associate producer"
-          text="Family Business, starring SahBabii and family"
-          date="2017">
-        </Video>
-        <Video
-          video={videoclip}
-          image={img3}
-          type="Documentary"
-          role="associate producer"
-          text="Family Business, starring SahBabii and family"
-          date="2017">
-        </Video>
-        <Video
-          video={videoclip}
-          image={img4}
-          type="Documentary"
-          role="associate producer"
-          text="Family Business, starring SahBabii and family"
-          date="2017">
-        </Video>
-        <Video
-          video={videoclip}
-          image={img5}
-          type="Documentary"
-          role="associate producer"
-          text="Family Business, starring SahBabii and family"
-          date="2017">
-        </Video>
+        {
+          props.videos.map((video) => {
+            return (
+              <Video
+                video={videoclip}
+                image={img1}
+                type={video.type}
+                role={video.role}
+                text={video.text}
+                date={video.date}
+                publication={video.publication}
+                link={video.link}>
+              </Video>
+            )
+          })
+        }
       </VideoContainer>
     </VideoWrapper>
   )
 }
 
-const Fashion = () => {
+const Fashion = (props) => {
   return (
     <FashionWrapper>
       <TwoColumnContainer spacing={'2x'}>
-      <Article
-          aspectRatio="portrait"
-          type="Editorial"
-          subtype="concept, creative direction, production"
-          title="A closer look at soccer’s most slept on item: the goalie glove"
-          publication="The FADER"
-          date="2018"
-          image={fashionImg1}>
-        </Article>
-        <Article
-          aspectRatio="portrait"
-          type="Editorial"
-          subtype="creative direction, production"
-          title="The best fall clothes for breaking the rules"
-          publication="The FADER"
-          date="2018"
-          image={fashionImg2}>
-        </Article>
-        <Article
-          aspectRatio="portrait"
-          type="Editorial"
-          subtype="styling, direction, production"
-          title="Exploring the texture spectrum in anticipation of fall"
-          publication="The FADER"
-          date="2017"
-          image={fashionImg3}>
-        </Article>
+        {
+          props.fashionArticles.map((fashionArticle) => {
+            return (
+              <Article
+                aspectRatio="portrait"
+                type={fashionArticle.type}
+                role={fashionArticle.role}
+                title={fashionArticle.title}
+                publication={fashionArticle.publication}
+                date={fashionArticle.date}
+                image={fashionArticle.image}
+                link={fashionArticle.link}>
+              </Article>
+            )
+          })
+        }
       </TwoColumnContainer>
     </FashionWrapper>
   )
@@ -383,37 +348,98 @@ class App extends Component {
     super(props);
 
     this.state = {
+      writingLoaded: false,
+      videoLoaded: false,
+      fashionLoaded: false,
+      liveLoaded: false,
+      ssLoaded: false,
+      infoLoaded: false,
       loaded: false,
       menuOpen: false,
       onInfoPage: false,
-      writingArticles: []
+      writingArticles: [],
+      videos: [],
+      fashionArticles: []
     }
   }
 
   componentDidMount() {
     let _this = this;
     fetch('/pages/writing.json')
-    .then(function(response) {
-      return response.json();
-    }).then(function(json) {
-      console.log(JSON.stringify(json));
+      .then(function(response) {
+        return response.json();
+      }).then(function(json) {
+        let articles = json.map((jsonItem) => {
+          let article = {};
+          article['title'] = jsonItem['title'];
+          article['type'] = jsonItem['type'];
+          article['publication'] = jsonItem['publication'];
+          article['date'] = jsonItem['date'];
+          article['image'] = jsonItem['image'];
+          article['link'] = jsonItem['link'];
 
-      let articles = json.map((jsonItem) => {
-        let article = {};
-        article['title'] = jsonItem['title'];
-        article['type'] = jsonItem['type'];
-        article['publication'] = jsonItem['publication'];
-        article['date'] = jsonItem['date'];
-        article['image'] = jsonItem['image'];
+          return article;
+        });
 
-        return article;
+        _this.setState({
+          writingArticles: articles ,
+          writingLoaded: true
+        });
+
+        _this.checkLoading();
       });
 
-      _this.setState({ writingArticles: articles });
-      setTimeout(() => {
-        _this.setState({ loaded: true });
-      }, 500);
-    });
+    fetch('/pages/video.json')
+      .then(function(response) {
+        return response.json();
+      }).then(function(json) {
+        let videos = json.map((jsonItem) => {
+          let video = {};
+          video['title'] = jsonItem['title'];
+          video['type'] = jsonItem['type'];
+          video['role'] = jsonItem['role'];
+          video['text'] = jsonItem['text'];
+          video['publication'] = jsonItem['publication'];
+          video['date'] = jsonItem['date'];
+          video['link'] = jsonItem['link'];
+
+          return video;
+        });
+
+        _this.setState({
+          videos: videos,
+          videoLoaded: true
+        });
+
+        _this.checkLoading();
+      });
+
+    fetch('/pages/fashion.json')
+      .then(function(response) {
+        return response.json();
+      }).then(function(json) {
+        let fashionArticles = json.map((jsonItem) => {
+          let fashionArticle = {};
+          fashionArticle['title'] = jsonItem['title'];
+          fashionArticle['type'] = jsonItem['type'];
+          fashionArticle['role'] = jsonItem['role'];
+          fashionArticle['publication'] = jsonItem['publication'];
+          fashionArticle['date'] = jsonItem['date'];
+          fashionArticle['image'] = jsonItem['image'];
+          fashionArticle['link'] = jsonItem['link'];
+
+          return fashionArticle;
+        });
+
+        _this.setState({
+          fashionArticles: fashionArticles,
+          fashionLoaded: true
+        });
+
+        _this.checkLoading();
+      });
+
+
 
     this.toggleMenu();
     window.addEventListener("resize", this.toggleMenu)
@@ -424,6 +450,19 @@ class App extends Component {
     console.log(this.state.writingArticles);
     if (this.props.location !== prevProps.location) {
       this.onRouteChanged();
+    }
+  }
+
+  checkLoading() {
+    console.log('checkLoading');
+    // this.state.liveLoaded && this.state.ssLoaded && this.infoLoaded
+    if (this.state.writingLoaded && this.state.videoLoaded && this.state.fashionLoaded) {
+      let _this = this;
+
+      setTimeout(() => {
+        _this.setState({ loaded: true });
+      }, 500)
+      
     }
   }
 
@@ -462,7 +501,7 @@ class App extends Component {
                   <NavLink onClick={this.closeMenu} to="/video">Video</NavLink>
                   <NavLink onClick={this.closeMenu} to="/fashion">Fashion</NavLink>
                   <NavLink onClick={this.closeMenu} to="/live+radio">live + radio</NavLink>
-                  <NavLink onClick={this.closeMenu} to="/s+s">s+s</NavLink>
+                  <NavLink onClick={this.closeMenu} to="https://www.google.com">s+s</NavLink>
                   <NavLink onClick={this.closeMenu} to="/info">Info</NavLink>
                 </NavLinkWrapper>
                 <NavLogoWrapper  moveLeft={this.state.onInfoPage} fadeIn={this.state.loaded}>
@@ -477,10 +516,10 @@ class App extends Component {
                     <Switch location={this.props.location}>
                       <Route path="/" exact component={Index} key="index" exact={true}/>
                       <Route path="/writing/" render={() => <Writing articles={this.state.writingArticles}/>} key="writing" exact={true}/>
-                      <Route path="/video/" component={VideoSection} key="video" exact={true}/>
-                      <Route path="/fashion/" component={Fashion} key="fashion" exact={true}/>
+                      <Route path="/video/" render={() => <VideoSection videos={this.state.videos}/>} key="video" exact={true}/>
+                      <Route path="/fashion/" render={() => <Fashion fashionArticles={this.state.fashionArticles}/>} key="fashion" exact={true}/>
                       <Route path="/live+radio/" component={LiveRadio} key="liveradio" exact={true}/>
-                      <Route path="/s+s/" component={SnS} key="sns" exact={true}/>
+                      {/* <Route path="/s+s/" component={SnS} key="sns" exact={true}/> */}
                       <Route path="/info/" component={Info} key="info" exact={true}/>
                       <Route component={Page404}/>
                     </Switch>

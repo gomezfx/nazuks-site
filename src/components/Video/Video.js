@@ -144,19 +144,19 @@ class Video extends Component {
   render() {
     return (
       <Waypoint onEnter={() => this.reveal()}>
-          <div>
+          <a href={this.props.link} target="_blank">
           <StyledVideo visible={this.state.revealed}>
             <ImageWrapper>
                 <Image image={this.props.image}></Image>
-                <video autoplay="autoplay" muted loop src={this.props.video}></video>
+                {/* <video autoplay="autoplay" muted loop src={this.props.video}></video> */}
             </ImageWrapper>
             <TextWrapper>
               <Type>{this.props.type}</Type><Role>{this.props.role}</Role>
               <Text>{this.props.text}</Text>
-              <Date>{this.props.date}</Date>
+              <Date>{this.props.publication}{this.props.publication && this.props.date ? ', ' : ''}{this.props.date}</Date>
             </TextWrapper>
           </StyledVideo>
-          </div>
+          </a>
       </Waypoint>
     );
   }

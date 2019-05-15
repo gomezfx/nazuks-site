@@ -83,7 +83,7 @@ const ArticleType = styled.div`
   }
 `;
 
-const ArticleSubtype = styled(ArticleType)`
+const ArticleRole = styled(ArticleType)`
   color: var(--color-black);
   background: transparent;
   display: block;
@@ -126,7 +126,7 @@ const StyledArticle = styled.section`
   
       ${Image} {
         transform: scale(1.2);
-        background-color: rgba(1, 255, 112, .2);
+        background-color: rgba(1, 255, 112, .15);
       }
   
       ${TextWrapper} {
@@ -171,16 +171,16 @@ class Article extends Component {
   render() {
     return (
       <Waypoint onEnter={() => this.reveal()}>
-          <div>
+          <a href={this.props.link} target="_blank">
           <StyledArticle visible={this.state.revealed}>
             <ImageWrapper landscape={this.props.aspectRatio !== 'portrait' ? true : false}><Image image={this.props.image}></Image></ImageWrapper>
             <TextWrapper>
-              <ArticleType>{this.props.type}</ArticleType><ArticleSubtype>{this.props.subtype}</ArticleSubtype>
+              <ArticleType>{this.props.type}</ArticleType><ArticleRole>{this.props.role}</ArticleRole>
               <Title>{this.props.title}</Title>
               <SubTitle>{this.props.publication}{this.props.publication && this.props.date ? ', ' : ''}{this.props.date}</SubTitle>
             </TextWrapper>
           </StyledArticle>
-          </div>
+          </a>
       </Waypoint>
     );
   }

@@ -1,0 +1,44 @@
+[
+  {
+    "type": "Documentary",
+    "role": "associate producer",
+    "text": "Family Business, starring SahBabii and family",
+    "publication": "The FADER",
+    "date": "2017",
+    "image": "/images/writing1.jpg",
+    "link": "https://www.youtube.com/watch?v=BkP6P34t5J4"
+  },
+  {
+    "type": "Documentary",
+    "role": "associate producer",
+    "text": "Never Going Back, starring Hoodrich Pablo Juan",
+    "publication": "The FADER",
+    "date": "2017",
+    "image": "/images/writing1.jpg",
+    "link": "https://www.youtube.com/watch?v=r4bTT75ISG8"
+  },
+  {
+    "type": "Off-camera interview",
+    "text": "Everything you need to know about Playboi Carti",
+    "publication": "The FADER",
+    "date": "2017",
+    "image": "/images/writing1.jpg",
+    "link": "https://www.thefader.com/2017/02/23/everything-you-need-to-know-playboi-carti"
+  },
+  {
+    "type": "Off-camera interview",
+    "text": "Everything you need to know about MadeinTYO",
+    "publication": "The FADER",
+    "date": "2017",
+    "image": "/images/writing1.jpg",
+    "link": "https://www.thefader.com/2017/06/01/everything-you-need-to-know-madeintyo"
+  },
+  {
+    "type": "Off-camera interview",
+    "text": "Lil Baby",
+    "publication": "The FADER",
+    "date": "2017",
+    "image": "/images/writing1.jpg",
+    "link": "https://www.thefader.com/2017/10/05/lil-baby-interview-video"
+  }
+]
