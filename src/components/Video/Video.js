@@ -108,7 +108,7 @@ const StyledVideo = styled.div`
   &:hover {
     ${Image} {
       transform: scale(1.2);
-      background-color: rgba(1, 255, 112, 1);
+      background-color: rgba(1, 255, 112, .15);
     }
 
     ${TextWrapper} {
