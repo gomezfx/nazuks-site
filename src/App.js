@@ -17,6 +17,7 @@ import Article from './components/Article/Article';
 import TwoColumnContainer from './components/TwoColumnContainer/TwoColumnContainer';
 import VideoContainer from './components/VideoContainer/VideoContainer';
 import InfoContainer from './components/InfoContainer/InfoContainer';
+import LiveRadioContainer from './components/LiveRadioContainer/LiveRadioContainer';
 import Video from './components/Video/Video';
 
 
@@ -116,9 +117,6 @@ const SnSWrapper = styled.div`
 const LiveRadioWrapper = styled.div`
   width: 100%;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
 const Page404Wrapper = styled.div`
@@ -229,10 +227,61 @@ const SnS = () => {
   )
 }
 
-const LiveRadio = () => {
+const RadioTitle = styled.h2`
+  font-size: var(--h4-font-size);
+  font-weight: bold;
+  text-transform: uppercase;
+  -webkit-text-stroke-color: var(--color-black);
+  color: black;
+  letter-spacing: 2px;
+  padding: 5px 0;
+  line-height: 1;
+  margin: 0;
+
+  @media(min-width: 768px) {
+    font-size: var(--h3-font-size);
+    color: transparent;
+    -webkit-text-stroke-width: 2px;
+  }
+`;
+
+const RadioList = styled.ul`
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  margin-bottom: 2rem;
+`;
+
+const RadioListItem = styled.li`
+  padding: 0;
+  margin: 0;
+`;
+
+const LiveRadio = (props) => {
   return (
     <LiveRadioWrapper>
-      Live + Radio
+      <LiveRadioContainer>
+        <RadioTitle>Live</RadioTitle>
+        <RadioList>
+          {
+            props.liveItems.map((liveItem) => {
+              return (
+                <RadioListItem>{liveItem}</RadioListItem>
+              )
+            })
+          }
+        </RadioList>
+        <RadioTitle>Radio</RadioTitle>
+        <RadioList>
+          {
+            props.radioItems.map((radioItem) => {
+              return (
+                <RadioListItem>{radioItem}</RadioListItem>
+              )
+            })
+          }
+        </RadioList>
+      </LiveRadioContainer>
     </LiveRadioWrapper>
   )
 }
@@ -351,7 +400,7 @@ class App extends Component {
       writingLoaded: false,
       videoLoaded: false,
       fashionLoaded: false,
-      liveLoaded: false,
+      liveRadioLoaded: false,
       ssLoaded: false,
       infoLoaded: false,
       loaded: false,
@@ -359,7 +408,9 @@ class App extends Component {
       onInfoPage: false,
       writingArticles: [],
       videos: [],
-      fashionArticles: []
+      fashionArticles: [],
+      liveItems: [],
+      radioItems: []
     }
   }
 
@@ -439,6 +490,28 @@ class App extends Component {
         _this.checkLoading();
       });
 
+      fetch('/pages/liveradio.json')
+      .then(function(response) {
+        return response.json();
+      }).then(function(json) {
+        let liveItems = json['live'].map((jsonItem) => {
+          let liveItem = jsonItem['text'];
+          return liveItem;
+        });
+
+        let radioItems = json['radio'].map((jsonItem) => {
+          let radioItem = jsonItem['text'];
+          return radioItem;
+        });
+
+        _this.setState({
+          liveItems: liveItems,
+          radioItems: radioItems,
+          liveRadioLoaded: true
+        });
+
+        _this.checkLoading();
+      });
 
 
     this.toggleMenu();
@@ -456,7 +529,7 @@ class App extends Component {
   checkLoading() {
     console.log('checkLoading');
     // this.state.liveLoaded && this.state.ssLoaded && this.infoLoaded
-    if (this.state.writingLoaded && this.state.videoLoaded && this.state.fashionLoaded) {
+    if (this.state.writingLoaded && this.state.videoLoaded && this.state.fashionLoaded && this.state.liveRadioLoaded) {
       let _this = this;
 
       setTimeout(() => {
@@ -518,7 +591,7 @@ class App extends Component {
                       <Route path="/writing/" render={() => <Writing articles={this.state.writingArticles}/>} key="writing" exact={true}/>
                       <Route path="/video/" render={() => <VideoSection videos={this.state.videos}/>} key="video" exact={true}/>
                       <Route path="/fashion/" render={() => <Fashion fashionArticles={this.state.fashionArticles}/>} key="fashion" exact={true}/>
-                      <Route path="/live+radio/" component={LiveRadio} key="liveradio" exact={true}/>
+                      <Route path="/live+radio/" render={() => <LiveRadio liveItems={this.state.liveItems} radioItems={this.state.radioItems}/>} key="liveradio" exact={true}/>
                       {/* <Route path="/s+s/" component={SnS} key="sns" exact={true}/> */}
                       <Route path="/info/" component={Info} key="info" exact={true}/>
                       <Route component={Page404}/>
