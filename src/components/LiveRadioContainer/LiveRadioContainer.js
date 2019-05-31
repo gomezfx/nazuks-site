@@ -8,7 +8,7 @@ const LiveRadioWrapper =  styled.div`
     margin: 0 auto;
 
     @media (min-width: 768px) {
-      width: 80%;
+      width: 80vw;
     }
 `;
 

@@ -374,7 +374,7 @@ const NavLogoWrapper = styled.div`
   opacity: ${props => props.fadeIn ? '1' : '0'};
 
   @media (min-width: 768px) {
-    transform: ${props => props.fadeIn && !props.moveLeft ? 'translate(-50%, 0%)' : ( props.fadeIn && props.moveLeft ? 'translate(calc(-50vw + 10vw + 3rem), 0%)' : 'translate(-50%, 20px)') };
+    transform: ${props => props.fadeIn && !props.moveLeft ? 'translate(-50%, 0%)' : ( props.fadeIn && props.moveLeft ? 'translate(calc(-50vw + 3rem + ' + props.offset + 'px), 0%)' : 'translate(-50%, 20px)') };
   }
 `;
 const HamburgerIconWrapper = styled.div`
@@ -397,6 +397,7 @@ class App extends Component {
     super(props);
 
     this.state = {
+      logoOffset: 0,
       writingLoaded: false,
       videoLoaded: false,
       fashionLoaded: false,
@@ -416,6 +417,24 @@ class App extends Component {
 
   componentDidMount() {
     let _this = this;
+    
+    let onResize = () => {
+      let offset = 0;
+      if (window.innerWidth > 1680) {
+        offset = (window.innerWidth - 1680) / 2 + (1680 * .10);
+      } else {
+        offset = window.innerWidth * .10;
+      }
+
+      _this.setState({
+        logoOffset: offset
+      });
+    };
+
+    window.onresize = onResize;
+
+    onResize();
+
     fetch('/pages/writing.json')
       .then(function(response) {
         return response.json();
@@ -575,7 +594,7 @@ class App extends Component {
                   <NavLink onClick={this.closeMenu} to="https://www.google.com">s+s</NavLink>
                   <NavLink onClick={this.closeMenu} to="/info">Info</NavLink>
                 </NavLinkWrapper>
-                <NavLogoWrapper  moveLeft={this.state.onInfoPage} fadeIn={this.state.loaded}>
+                <NavLogoWrapper  offset={this.state.logoOffset} moveLeft={this.state.onInfoPage} fadeIn={this.state.loaded}>
                   <NavLogo to="/">nazuk</NavLogo>
                 </NavLogoWrapper>
               <NavTop fadeIn={this.state.loaded}>
