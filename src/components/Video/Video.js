@@ -50,6 +50,20 @@ const Image = styled.div`
   &:hover {
 
   }
+
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: ${props => props.loaded ? '0' : '1'};
+    background-color: rgba(1, 255, 112, 1);
+    z-index: 0;
+    content: ' ';
+    transition: all .25s ease-in;
+    transition-delay: 1s;
+  }
   
 `;
 
@@ -125,13 +139,21 @@ const StyledVideo = styled.div`
   }
 `;
 
+const ImageLoad = styled.img`
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+`;
+
 
 class Video extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      revealed: false
+      revealed: false,
+      imageLoaded: false
     }
   }
 
@@ -141,13 +163,27 @@ class Video extends Component {
     }, 0);
   }
 
+  handleImageLoaded() {
+    console.log('loaded');
+    this.setState({ imageLoaded: true });
+  }
+
+  handleImageErrored() {
+
+  }
+
   render() {
     return (
       <Waypoint onEnter={() => this.reveal()}>
           <a href={this.props.link} target="_blank">
           <StyledVideo visible={this.state.revealed}>
             <ImageWrapper>
-                <Image image={this.props.image}></Image>
+                <ImageLoad
+                  src={this.props.image}
+                  onLoad={this.handleImageLoaded.bind(this)}
+                  onError={this.handleImageErrored.bind(this)}>
+                </ImageLoad>
+                <Image loaded={this.state.imageLoaded} image={this.props.image}></Image>
                 {/* <video autoplay="autoplay" muted loop src={this.props.video}></video> */}
             </ImageWrapper>
             <TextWrapper>

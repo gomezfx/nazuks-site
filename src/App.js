@@ -520,14 +520,12 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(this.state.writingArticles);
     if (this.props.location !== prevProps.location) {
       this.onRouteChanged();
     }
   }
 
   checkLoading() {
-    console.log('checkLoading');
     // this.state.liveLoaded && this.state.ssLoaded && this.infoLoaded
     if (this.state.writingLoaded && this.state.videoLoaded && this.state.fashionLoaded && this.state.liveRadioLoaded) {
       let _this = this;

@@ -31,8 +31,21 @@ const Image = styled.div`
   background-blend-mode: overlay;
   background-size: cover;
   background-position: 50% 50%;
-
   
+
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: ${props => props.loaded ? '0' : '1'};
+    background-color: rgba(1, 255, 112, 1);
+    z-index: 0;
+    content: ' ';
+    transition: all .25s ease-in;
+    transition-delay: 1s;
+  }
 `;
 
 
@@ -58,7 +71,7 @@ const Title = styled.h2`
 const TextWrapper = styled.div`
   word-break: break-word;
   hyphens: auto;
-
+	will-change: transform;
 
   @media(min-width: 768px) {
     transform: translateY(-50%);
@@ -109,6 +122,7 @@ const StyledArticle = styled.section`
   transition-delay: .6s;
   transform-origin: top center;
   opacity: 1;
+  will-change: transform;
   transform: ${props => props.visible ? 'perspective(1000px) rotateX(0)' : 'perspective(1000px) rotateX(-90deg)'};
   transition: transform 1.6s cubic-bezier(.075,.82,.165,1),opacity .3s cubic-bezier(.075,.82,.165,1);
   
@@ -153,12 +167,20 @@ const StyledArticle = styled.section`
   }
 `;
 
+const ImageLoad = styled.img`
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+`;
+
 class Article extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      revealed: false
+      revealed: false,
+      imageLoaded: false
     }
   }
 
@@ -168,12 +190,27 @@ class Article extends Component {
     }, 0);
   }
 
+  handleImageLoaded() {
+    this.setState({ imageLoaded: true });
+  }
+
+  handleImageErrored() {
+
+  }
+
   render() {
     return (
       <Waypoint onEnter={() => this.reveal()}>
           <a href={this.props.link} target="_blank">
           <StyledArticle visible={this.state.revealed}>
-            <ImageWrapper landscape={this.props.aspectRatio !== 'portrait' ? true : false}><Image image={this.props.image}></Image></ImageWrapper>
+            <ImageWrapper landscape={this.props.aspectRatio !== 'portrait' ? true : false}>
+              <ImageLoad
+                src={this.props.image}
+                onLoad={this.handleImageLoaded.bind(this)}
+                onError={this.handleImageErrored.bind(this)}>
+              </ImageLoad>
+              <Image loaded={this.state.imageLoaded} image={this.props.image}></Image>
+            </ImageWrapper>
             <TextWrapper>
               <ArticleType>{this.props.type}</ArticleType><ArticleRole>{this.props.role}</ArticleRole>
               <Title>{this.props.title}</Title>
