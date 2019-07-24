@@ -20,19 +20,7 @@ import InfoContainer from './components/InfoContainer/InfoContainer';
 import LiveRadioContainer from './components/LiveRadioContainer/LiveRadioContainer';
 import Video from './components/Video/Video';
 
-
-// Assets
-import twitterSvg from './images/twitter.svg';
-import instagramSvg from './images/instagram.svg';
-
 import img1 from './images/img1.png'
-import img2 from './images/img2.png'
-import img3 from './images/img3.png'
-import img4 from './images/img4.png'
-import img5 from './images/img5.png'
-import fashionImg1 from './images/fashion1.jpg'
-import fashionImg2 from './images/fashion2.jpg'
-import fashionImg3 from './images/fashion3.jpg'
 
 import videoclip from './videos/videoclip.mp4'
 import HamburgerIcon from './components/HamburgerIcon/HamburgerIcon';
@@ -237,6 +225,7 @@ const RadioTitle = styled.h2`
   padding: 5px 0;
   line-height: 1;
   margin: 0;
+  margin-bottom: .5rem;
 
   @media(min-width: 768px) {
     font-size: var(--h3-font-size);
@@ -255,6 +244,7 @@ const RadioList = styled.ul`
 const RadioListItem = styled.li`
   padding: 0;
   margin: 0;
+  margin-bottom: .25rem;
 `;
 
 const LiveRadio = (props) => {
@@ -595,7 +585,7 @@ class App extends Component {
                   <NavLink onClick={this.closeMenu} to="/info">Info</NavLink>
                 </NavLinkWrapper>
                 <NavLogoWrapper  offset={this.state.logoOffset} moveLeft={this.state.onInfoPage} fadeIn={this.state.loaded}>
-                  <NavLogo to="/">nazuk</NavLogo>
+                  <NavLogo onClick={this.closeMenu} to="/">nazuk</NavLogo>
                 </NavLogoWrapper>
               <NavTop fadeIn={this.state.loaded}>
               </NavTop>
