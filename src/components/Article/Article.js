@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
-import posed from 'react-pose';
 import Waypoint from "react-waypoint";
 
 const Description =  styled.div`

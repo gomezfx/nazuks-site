@@ -18,6 +18,8 @@ import TwoColumnContainer from './components/TwoColumnContainer/TwoColumnContain
 import VideoContainer from './components/VideoContainer/VideoContainer';
 import InfoContainer from './components/InfoContainer/InfoContainer';
 import LiveRadioContainer from './components/LiveRadioContainer/LiveRadioContainer';
+import SSContainer from './components/SSContainer/SSContainer';
+import SSPost from './components/SSPost/SSPost';
 import Video from './components/Video/Video';
 
 import img1 from './images/img1.png'
@@ -96,10 +98,7 @@ const FashionWrapper = styled.div`
 
 const SnSWrapper = styled.div`
   width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 0 auto;
 `;
 
 const LiveRadioWrapper = styled.div`
@@ -207,10 +206,14 @@ const Fashion = (props) => {
   )
 }
 
-const SnS = () => {
+const SSSection = () => {
   return (
     <SnSWrapper>
-      S+S
+      <SSContainer>
+        <SSPost soundcloudSrc="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/643700832&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></SSPost>
+        <SSPost soundcloudSrc="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/643700832&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=false"></SSPost>
+        <SSPost soundcloudSrc="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/643700832&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=false&show_artwork=false"></SSPost>
+      </SSContainer>
     </SnSWrapper>
   )
 }
@@ -581,7 +584,7 @@ class App extends Component {
                   <NavLink onClick={this.closeMenu} to="/video">Video</NavLink>
                   <NavLink onClick={this.closeMenu} to="/fashion">Fashion</NavLink>
                   <NavLink onClick={this.closeMenu} to="/live+radio">live + radio</NavLink>
-                  <NavLink onClick={this.closeMenu} to="https://www.google.com">s+s</NavLink>
+                  <NavLink onClick={this.closeMenu} to="/s+s">s+s</NavLink>
                   <NavLink onClick={this.closeMenu} to="/info">Info</NavLink>
                 </NavLinkWrapper>
                 <NavLogoWrapper  offset={this.state.logoOffset} moveLeft={this.state.onInfoPage} fadeIn={this.state.loaded}>
@@ -599,7 +602,7 @@ class App extends Component {
                       <Route path="/video/" render={() => <VideoSection videos={this.state.videos}/>} key="video" exact={true}/>
                       <Route path="/fashion/" render={() => <Fashion fashionArticles={this.state.fashionArticles}/>} key="fashion" exact={true}/>
                       <Route path="/live+radio/" render={() => <LiveRadio liveItems={this.state.liveItems} radioItems={this.state.radioItems}/>} key="liveradio" exact={true}/>
-                      {/* <Route path="/s+s/" component={SnS} key="sns" exact={true}/> */}
+                      <Route path="/s+s/" component={SSSection} key="sns" exact={true}/>
                       <Route path="/info/" component={Info} key="info" exact={true}/>
                       <Route component={Page404}/>
                     </Switch>
