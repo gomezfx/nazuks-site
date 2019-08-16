@@ -6,7 +6,15 @@
 
 module.exports = {
   plugins: [
-    `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        // Change plugin default options here, e.g.:
+        // ssr: false
+        // displayName: false, 
+        // minify: false
+      },
+    },
     {
       resolve: `gatsby-plugin-netlify-cms`,
       options: {
