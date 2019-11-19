@@ -7,6 +7,21 @@
 module.exports = {
   plugins: [
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-pages-writing`,
+        path: `${__dirname}/src/pages/writing`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-pages-video`,
+        path: `${__dirname}/src/pages/video`,
+      },
+    },
+    `gatsby-transformer-remark`,
+    {
       resolve: `gatsby-plugin-styled-components`,
       options: {
         // Change plugin default options here, e.g.:

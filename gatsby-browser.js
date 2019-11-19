@@ -1,5 +1,5 @@
 import React from 'react';
-import AppWrapper from './src/components/AppWrapper'
+import AppWrapper from './src/AppWrapper'
 import './src/index.css';
 
 export const wrapPageElement = ({ element, props }) => (

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
-import Waypoint from "react-waypoint";
+import { Waypoint } from 'react-waypoint';
 
 const Description =  styled.div`
   margin-top: 10px;
@@ -198,6 +198,8 @@ class Article extends Component {
   }
 
   render() {
+    let options = { year: 'numeric', month: 'long', day: 'numeric' };
+    let formattedDate = new Date(this.props.date).toLocaleDateString("en-US", options);
     return (
       <Waypoint onEnter={() => this.reveal()}>
           <a href={this.props.link} target="_blank">
@@ -213,7 +215,7 @@ class Article extends Component {
             <TextWrapper>
               <ArticleType>{this.props.type}</ArticleType><ArticleRole>{this.props.role}</ArticleRole>
               <Title>{this.props.title}</Title>
-              <SubTitle>{this.props.publication}{this.props.publication && this.props.date ? ', ' : ''}{this.props.date}</SubTitle>
+              <SubTitle>{this.props.publication}{this.props.publication && this.props.date ? ', ' : ''}{formattedDate}</SubTitle>
             </TextWrapper>
           </StyledArticle>
           </a>

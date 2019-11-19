@@ -81,15 +81,19 @@ class TwoColumnContainer extends Component {
   }
 
   render() {
-    let even = this.props.children ? this.props.children.filter((child, index) => (index % 2)) : [];
-    let odd = this.props.children ? this.props.children.filter((child, index) => !(index % 2)) : [];
+    let even = [];
+    let odd = [this.props.children];
 
+    if (Array.isArray(this.props.children)) {
+      even = this.props.children ? this.props.children.filter((child, index) => (index % 2)) : [];
+      odd = this.props.children ? this.props.children.filter((child, index) => !(index % 2)) : [];
+    }
     return (
         <TwoColumnWrapper spacing={this.props.spacing}>
           <ColMobile>{this.props.children}</ColMobile>
           <ColLeft spacing={this.props.spacing}>
             {
-              odd.map((child, index) => <ColItem>{child}</ColItem>)
+              odd.reverse().map((child, index) => <ColItem>{child}</ColItem>)
             }
           </ColLeft>
           <ColRight spacing={this.props.spacing}>
