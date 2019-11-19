@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
 
-import Loader from './Loader';
-import HamburgerIcon from './HamburgerIcon';
-import NavLink from './NavLink';
-import NavLogo from './NavLogo';
+import Loader from './components/Loader';
+import HamburgerIcon from './components/HamburgerIcon';
+import NavLink from './components/NavLink';
+import NavLogo from './components/NavLogo';
 
 const StyledAppWrapper = styled.div`
   background: #DEDEDE;
