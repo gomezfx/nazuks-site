@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
 import posed from 'react-pose';
-import Waypoint from "react-waypoint";
+import { Waypoint } from 'react-waypoint';
 
 const Description =  styled.div`
   margin-top: 10px;
@@ -74,7 +74,7 @@ const TextWrapper = styled.div`
   position: absolute;
 `;
 
-const Date = styled.div`
+const DateText = styled.div`
   font-size: 1rem;
   transition: all .7s cubic-bezier(.075,.82,.165,1);
   color: var(--color-black);
@@ -173,6 +173,9 @@ class Video extends Component {
   }
 
   render() {
+    let options = { year: 'numeric', month: 'long', day: 'numeric' };
+    let formattedDate = new Date(this.props.date).toLocaleDateString("en-US", options);
+
     return (
       <Waypoint onEnter={() => this.reveal()}>
           <a href={this.props.link} target="_blank">
@@ -188,8 +191,8 @@ class Video extends Component {
             </ImageWrapper>
             <TextWrapper>
               <Type>{this.props.type}</Type><Role>{this.props.role}</Role>
-              <Text>{this.props.text}</Text>
-              <Date>{this.props.publication}{this.props.publication && this.props.date ? ', ' : ''}{this.props.date}</Date>
+              <Text>{this.props.title}</Text>
+              <DateText>{this.props.publication}{this.props.publication && this.props.date ? ', ' : ''}{formattedDate}</DateText>
             </TextWrapper>
           </StyledVideo>
           </a>

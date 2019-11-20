@@ -20,6 +20,13 @@ module.exports = {
         path: `${__dirname}/src/pages/video`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-pages-fashion`,
+        path: `${__dirname}/src/pages/fashion`,
+      },
+    },
     `gatsby-transformer-remark`,
     {
       resolve: `gatsby-plugin-styled-components`,

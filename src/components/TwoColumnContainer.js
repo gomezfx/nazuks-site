@@ -93,12 +93,12 @@ class TwoColumnContainer extends Component {
           <ColMobile>{this.props.children}</ColMobile>
           <ColLeft spacing={this.props.spacing}>
             {
-              odd.reverse().map((child, index) => <ColItem>{child}</ColItem>)
+              odd.reverse().map((child, index) => <ColItem key={'odd' + index}>{child}</ColItem>)
             }
           </ColLeft>
           <ColRight spacing={this.props.spacing}>
             {
-              even.map((child, index) => <ColItem>{child}</ColItem>)
+              even.map((child, index) => <ColItem key={'even' + index}>{child}</ColItem>)
             }
           </ColRight>
         </TwoColumnWrapper>

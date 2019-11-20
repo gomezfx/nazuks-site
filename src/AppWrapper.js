@@ -157,9 +157,9 @@ class AppWrapper extends Component {
                     </StyledHamburgerIconWrapper>
                     <StyledNavLinkWrapper fadeIn={this.state.loaded} visible={this.state.menuOpen}>
                         <NavLink onClick={this.closeMenu} to="/writing">Writing</NavLink>
-                        {/* <NavLink onClick={this.closeMenu} to="/video">Video</NavLink>
+                        <NavLink onClick={this.closeMenu} to="/video">Video</NavLink>
                         <NavLink onClick={this.closeMenu} to="/fashion">Fashion</NavLink>
-                        <NavLink onClick={this.closeMenu} to="/live+radio">live + radio</NavLink>
+                        {/* <NavLink onClick={this.closeMenu} to="/live+radio">live + radio</NavLink>
                         <NavLink onClick={this.closeMenu} to="/s+s">s+s</NavLink>
                         <NavLink onClick={this.closeMenu} to="/info">Info</NavLink> */}
                     </StyledNavLinkWrapper>

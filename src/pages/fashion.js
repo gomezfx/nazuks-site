@@ -6,21 +6,22 @@ import Article from '../components/Article'
 
 import { graphql } from "gatsby"
 
-const WritingWrapper = styled.div`
+const FashionWrapper = styled.div`
   width: 100%;
   margin: 0 auto;
 `;
 
-const Writing = ({data}) => {
+const Fashion = ({data}) => {
     const { edges } = data.allMarkdownRemark
 
     return (
         <>
-            <WritingWrapper>
-                <TwoColumnContainer spacing={'1x'}>
+            <FashionWrapper>
+                <TwoColumnContainer spacing={'2x'}>
                     {
                         edges.sort((x,y) => new Date(y.node.frontmatter.date) - new Date(x.node.frontmatter.date)).map(edge => {
                             return <Article
+                                        aspectRatio="portrait"
                                         key={edge.node.id}
                                         type={edge.node.frontmatter.type}
                                         title={edge.node.frontmatter.title}
@@ -32,16 +33,16 @@ const Writing = ({data}) => {
                         })
                     }
                 </TwoColumnContainer>
-            </WritingWrapper>
+            </FashionWrapper>
         </>
     )
 }
 
-export default Writing
+export default Fashion
 
 export const pageQuery = graphql`
-    query writingOnly {
-        allMarkdownRemark(filter: { collection: { eq: "markdown-pages-writing" } }) {
+    query fashionOnly {
+        allMarkdownRemark(filter: { collection: { eq: "markdown-pages-fashion" } }) {
             edges {
                 node {
                     id
@@ -53,6 +54,7 @@ export const pageQuery = graphql`
                             date
                             link
                             publication
+                            role
                         }
                 }
             }

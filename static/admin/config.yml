@@ -9,19 +9,32 @@ collections:
     folder: src/pages/writing
     create: true
     fields:
-      - { name: type, label: Type }
-      - { name: link, label: Link }
-      - { name: date, label: Date, widget: date }
-      - { name: title, label: Title }
-      - { name: publication, label: Publication }
       - { name: image, label: Image, widget: image }
-      - { name: body, label: Body }
+      - { name: title, label: Title }
+      - { name: date, label: Date, widget: date }
+      - { name: type, label: Type }
+      - { name: publication, label: Publication }
+      - { name: link, label: Link }
   - name: video
     label: Video
     folder: src/pages/video
     create: true
     fields:
-      - { name: link, label: Link }
-      - { name: date, label: Date, widget: date }
+      - { name: image, label: Image, widget: image }
       - { name: title, label: Title }
+      - { name: date, label: Date, widget: date }
+      - { name: type, label: Type }
       - { name: role, label: Role }
+      - { name: link, label: Link }
+  - name: fashion
+    label: Fashion
+    folder: src/pages/fashion
+    create: true
+    fields:
+      - { name: image, label: Image, widget: image }
+      - { name: title, label: Title }
+      - { name: date, label: Date, widget: date }
+      - { name: type, label: Type }
+      - { name: publication, label: Publication }
+      - { name: role, label: Role }
+      - { name: link, label: Link }
